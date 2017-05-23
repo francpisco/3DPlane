@@ -15,7 +15,7 @@ public class WindowView {
     public void start(Pane root) {
 
         Rectangle window = new Rectangle(5, 5, 200, 200);
-        root.getChildren().add();
+//        root.getChildren().add();
 
 
     }
