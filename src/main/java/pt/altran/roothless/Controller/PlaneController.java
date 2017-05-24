@@ -74,7 +74,7 @@ public class PlaneController {
         thrustSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 thrustLabel.setText(String.format("%.0f",newValue));
-                plane.setyAcceleration((double)newValue);
+                plane.setyAcceleration((double)newValue/10);
             }
         });
 
