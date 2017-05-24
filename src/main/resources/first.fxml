@@ -4,18 +4,52 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
+<Pane fx:id="cockpitPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
    <children>
-      <Pane layoutY="272.0" prefHeight="128.0" prefWidth="600.0" style="-fx-background-color: gray;">
+      <Pane layoutX="1.0" layoutY="272.0" prefHeight="128.0" prefWidth="600.0" style="-fx-background-color: gray;">
          <children>
-            <Slider fx:id="turnslider" blockIncrement="1.0" layoutX="118.0" layoutY="45.0" max="50.0" min="-50.0" showTickLabels="true" showTickMarks="true" />
-            <Slider fx:id="thrustSlider" layoutX="86.0" orientation="VERTICAL" prefHeight="128.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />
-            <ToggleButton fx:id="landingGearButton" layoutX="311.0" layoutY="39.0" mnemonicParsing="false" onAction="#landingGear" text="ToggleButton" />
-            <Label fx:id="turnValueLabel" layoutX="174.0" layoutY="22.0" text="Label" />
-            <Label fx:id="thrustLabel" layoutX="34.0" layoutY="55.0" text="Label" />
-            <Slider fx:id="flapsSlider" blockIncrement="1.0" layoutX="442.0" layoutY="5.0" majorTickUnit="4.0" max="4.0" minorTickCount="1" orientation="VERTICAL" prefHeight="118.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />
-            <Label fx:id="flapsLabel" layoutX="470.0" layoutY="56.0" text="Label" />
+            <Slider fx:id="turnslider" blockIncrement="1.0" layoutX="92.0" layoutY="90.0" max="50.0" min="-50.0" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="thrustSlider" layoutX="23.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="128.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />
+            <ToggleButton fx:id="landingGearButton" layoutX="530.0" layoutY="10.0" mnemonicParsing="false" onAction="#landingGear" prefHeight="25.0" prefWidth="56.0" text="Landing Gear">
+               <font>
+                  <Font size="7.0" />
+               </font></ToggleButton>
+            <Label fx:id="turnValueLabel" layoutX="146.0" layoutY="56.0" text="Label" />
+            <Label fx:id="thrustLabel" layoutX="48.0" layoutY="56.0" text="Label" />
+            <Slider fx:id="flapsSlider" blockIncrement="1.0" layoutX="287.0" layoutY="6.0" majorTickUnit="4.0" max="4.0" minorTickCount="1" orientation="VERTICAL" prefHeight="118.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />
+            <Label fx:id="flapsLabel" layoutX="254.0" layoutY="55.0" text="Label" />
+            <ToggleButton layoutX="529.0" layoutY="42.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Parking Brakes">
+               <font>
+                  <Font size="6.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton layoutX="350.0" layoutY="77.0" mnemonicParsing="false" text="POWER" />
+            <ToggleButton layoutX="384.0" layoutY="10.0" mnemonicParsing="false" text="Engine 2" />
+            <ToggleButton layoutX="314.0" layoutY="10.0" mnemonicParsing="false" text="Engine 1" />
+            <ToggleButton layoutX="313.0" layoutY="43.0" mnemonicParsing="false" text="Engine 3" />
+            <ToggleButton layoutX="385.0" layoutY="44.0" mnemonicParsing="false" text="Engine 4" />
+            <ToggleButton layoutX="529.0" layoutY="74.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="FUEL PUMP">
+               <font>
+                  <Font size="6.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton layoutX="464.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="A P U ">
+               <font>
+                  <Font size="6.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton layoutX="464.0" layoutY="43.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="LIGHTS">
+               <font>
+                  <Font size="6.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton layoutX="465.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="COM">
+               <font>
+                  <Font size="6.0" />
+               </font>
+            </ToggleButton>
          </children>
       </Pane>
    </children>
