@@ -4,13 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pt.altran.roothless.Controller.PlaneController;
-import pt.altran.roothless.service.PlaneCommands;
-import pt.altran.roothless.view.WindowView;
-
-import java.awt.*;
 
 public class Main extends Application {
 
