@@ -1,4 +1,4 @@
-package main.java.pt.altran.roothless.Controller;
+package pt.altran.roothless.Controller;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -9,9 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Ellipse;
 import javafx.util.Duration;
-import main.java.pt.altran.roothless.model.Circle;
-import main.java.pt.altran.roothless.model.Plane;
-import main.java.pt.altran.roothless.service.UpdateShapes;
+import pt.altran.roothless.model.Circle;
+import pt.altran.roothless.model.Plane;
+import pt.altran.roothless.service.UpdateShapes;
 
 import java.net.URL;
 import java.util.ResourceBundle;

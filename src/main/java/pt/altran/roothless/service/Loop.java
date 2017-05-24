@@ -1,8 +1,8 @@
-package main.java.pt.altran.roothless.service;
+package pt.altran.roothless.service;
 
 
-import main.java.pt.altran.roothless.model.Circle;
-import main.java.pt.altran.roothless.model.Plane;
+import pt.altran.roothless.model.Circle;
+import pt.altran.roothless.model.Plane;
 
 /**
  * Created by Altran on 23/05/2017.

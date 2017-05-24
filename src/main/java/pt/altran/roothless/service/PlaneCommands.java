@@ -1,4 +1,4 @@
-package main.java.pt.altran.roothless.service;
+package pt.altran.roothless.service;
 
 /**
  * Created by Altran on 22/05/2017.
