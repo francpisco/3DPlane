@@ -73,7 +73,7 @@ public class PlaneController {
     public Label thrustLabel;
 
     @FXML
-    private Boolean LandingGearUp = true;
+    private Boolean landingGearUp = true;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -149,12 +149,12 @@ public class PlaneController {
     public void landingGear(ActionEvent actionEvent) {
 
         if (powerbol && apubol) {
-            if (LandingGearUp) {
+            if (landingGearUp) {
                 landingGearButton.setStyle("-fx-background-color: green;");
-                LandingGearUp = false;
+                landingGearUp = false;
             } else {
                 landingGearButton.setStyle("-fx-background-color: red;");
-                LandingGearUp = true;
+                landingGearUp = true;
             }
         }
 
@@ -183,8 +183,28 @@ public class PlaneController {
         } else {
             power.setStyle("-fx-background-color: red;");
             powerbol = false;
+            apu.setStyle("-fx-background-color: red;");
+            apubol = false;
+            fuelpump.setStyle("-fx-background-color: red;");
+            fuelpumpbol = false;
+            parkingbrakesbol=false;
+            parkingbrakes.setStyle("-fx-background-color: red;");
+            landingGearUp = false;
+            landingGearButton.setStyle("-fx-background-color: red;");
             engine1bol = false;
-            engine1.setStyle("-fx-background-color: red");
+            engine1.setStyle("-fx-background-color: red;");
+            engine2.setStyle("-fx-background-color: red");
+            engine2bol = false;
+            engine3.setStyle("-fx-background-color: red");
+            engine3bol = false;
+            engine3.setStyle("-fx-background-color: red");
+            engine4bol = false;
+            engine4.setStyle("-fx-background-color: red");
+            lightsbol = false;
+            lights.setStyle("-fx-background-color: red;");
+            combol = false;
+            com.setStyle("-fx-background-color: red;");
+
         }
     }
 
@@ -250,6 +270,15 @@ public class PlaneController {
             } else {
                 fuelpump.setStyle("-fx-background-color: red;");
                 fuelpumpbol = false;
+                engine1bol = false;
+                engine1.setStyle("-fx-background-color: red;");
+                engine2.setStyle("-fx-background-color: red");
+                engine2bol = false;
+                engine3.setStyle("-fx-background-color: red");
+                engine3bol = false;
+                engine3.setStyle("-fx-background-color: red");
+                engine4bol = false;
+                engine4.setStyle("-fx-background-color: red");
             }
         }
     }
