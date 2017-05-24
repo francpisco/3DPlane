@@ -67,6 +67,7 @@ public class PlaneController {
         turnslider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 turnValueLabel.setText(String.format("%.0f" , newValue));
+                plane.setyAcceleration(1);
             }
         });
 
