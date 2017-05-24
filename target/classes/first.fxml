@@ -7,9 +7,9 @@
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="cockpitPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
+<Pane fx:id="master_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
    <children>
-      <Pane layoutX="1.0" layoutY="272.0" prefHeight="128.0" prefWidth="600.0" style="-fx-background-color: gray;">
+      <Pane fx:id="cockpit_pane" layoutX="1.0" layoutY="272.0" prefHeight="128.0" prefWidth="600.0" style="-fx-background-color: gray;">
          <children>
             <Slider fx:id="turnslider" blockIncrement="1.0" layoutX="92.0" layoutY="90.0" max="50.0" min="-50.0" showTickLabels="true" showTickMarks="true" />
             <Slider fx:id="thrustSlider" layoutX="23.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="128.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />
@@ -53,6 +53,10 @@
             </ToggleButton>
          </children>
       </Pane>
-      <Ellipse fx:id="targetElipse" fill="DODGERBLUE" layoutX="195.0" layoutY="107.0" radiusX="10.0" radiusY="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Pane fx:id="window_pane" prefHeight="144.0" prefWidth="600.0">
+         <children>
+            <Ellipse fx:id="targetElipse" fill="DODGERBLUE" layoutX="268.0" layoutY="98.0" radiusX="10.0" radiusY="8.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </Pane>
    </children>
 </Pane>

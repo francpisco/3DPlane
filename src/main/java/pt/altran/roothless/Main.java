@@ -15,6 +15,7 @@ public class Main extends Application {
 
 
     //TODO : ELLIPSE VAZIA; COPCKPIT POR CIMA DA ELLIPSE
+
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -35,7 +36,7 @@ public class Main extends Application {
         planeController.setPlane(plane);
 
         primaryStage.setTitle("Flight of the Conchords");
-        primaryStage.setScene(new Scene(root, 800, 700));
+        primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
 
     }
