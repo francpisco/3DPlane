@@ -176,12 +176,14 @@ public class PlaneController {
 
     public void power(ActionEvent actionEvent) {
 
-        if (powerbol) {
-            power.setStyle("-fx-background-color: red;");
-            powerbol = false;
-        } else {
+        if (!powerbol) {
             power.setStyle("-fx-background-color: green;");
             powerbol = true;
+        } else {
+            power.setStyle("-fx-background-color: red;");
+            powerbol = false;
+            engine1bol = false;
+            engine1.setStyle("-fx-background-color: red");
         }
     }
 
