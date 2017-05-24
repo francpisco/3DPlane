@@ -9,8 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Ellipse;
 import javafx.util.Duration;
-import pt.altran.roothless.model.Circle;
-import pt.altran.roothless.service.UpdateShapes;
+import main.java.pt.altran.roothless.model.Circle;
+import main.java.pt.altran.roothless.model.Plane;
+import main.java.pt.altran.roothless.service.UpdateShapes;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +22,7 @@ public class FlightControl implements Initializable{
     private double elipseRot;
     private double elipseScale = 1.0;
     private Circle circle;
-    private pt.altran.roothless.model.Plane plane;
+    private Plane plane;
 
     @FXML
     private Button leftButton;
@@ -83,7 +84,7 @@ public class FlightControl implements Initializable{
         this.circle = circle;
     }
 
-    public void setPlane(pt.altran.roothless.model.Plane plane) {
+    public void setPlane(Plane plane) {
         this.plane = plane;
     }
 }

@@ -1,6 +1,7 @@
 package main.java.pt.altran.roothless.model;
 
-import pt.altran.roothless.service.Physics;
+
+import main.java.pt.altran.roothless.service.Physics;
 
 /**
  * Created by Altran on 22/05/2017.

@@ -1,7 +1,9 @@
 package main.java.pt.altran.roothless.service;
 
 import javafx.scene.shape.Ellipse;
-import pt.altran.roothless.model.Circle;
+import main.java.pt.altran.roothless.model.Circle;
+import main.java.pt.altran.roothless.model.Plane;
+
 
 /**
  * Created by Altran on 23/05/2017.
@@ -9,7 +11,7 @@ import pt.altran.roothless.model.Circle;
 public class UpdateShapes {
 
 
-    public static void updateElipse(Ellipse targetElipse, Circle circle, pt.altran.roothless.model.Plane plane, double elipseCenter) {
+    public static void updateElipse(Ellipse targetElipse, Circle circle, Plane plane, double elipseCenter) {
 
         double distanceY = circle.getyPosition() - plane.getyPosition();
         double distanceX = circle.getxPosition() - plane.getxPosition();

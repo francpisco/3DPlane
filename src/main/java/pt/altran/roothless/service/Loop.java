@@ -1,16 +1,18 @@
 package main.java.pt.altran.roothless.service;
 
-import pt.altran.roothless.model.Circle;
+
+import main.java.pt.altran.roothless.model.Circle;
+import main.java.pt.altran.roothless.model.Plane;
 
 /**
  * Created by Altran on 23/05/2017.
  */
 public class Loop implements Runnable {
 
-    pt.altran.roothless.model.Plane plane;
+    Plane plane;
     Circle circle;
 
-    public Loop(pt.altran.roothless.model.Plane plane, Circle circle) {
+    public Loop(Plane plane, Circle circle) {
         this.plane = plane;
         this.circle = circle;
     }
@@ -37,7 +39,7 @@ public class Loop implements Runnable {
         }
     }
 
-    public void setPlane(pt.altran.roothless.model.Plane plane) {
+    public void setPlane(Plane plane) {
         this.plane = plane;
     }
 }

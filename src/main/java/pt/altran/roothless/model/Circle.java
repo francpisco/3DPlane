@@ -1,6 +1,7 @@
 package main.java.pt.altran.roothless.model;
 
-import pt.altran.roothless.service.Constants;
+
+import main.java.pt.altran.roothless.service.Constants;
 
 /**
  * Created by Altran on 23/05/2017.
