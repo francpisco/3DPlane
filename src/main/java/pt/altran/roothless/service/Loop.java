@@ -33,8 +33,8 @@ public class Loop implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("xP=" + plane.getxPosition() + "; yP=" + plane.getyPosition()
-                    + "; zP=" + plane.getzPosition());
+//            System.out.println("xP=" + plane.getxPosition() + "; yP=" + plane.getyPosition()
+//                    + "; zP=" + plane.getzPosition());
 
         }
     }

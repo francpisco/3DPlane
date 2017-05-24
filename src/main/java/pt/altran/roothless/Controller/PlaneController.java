@@ -67,13 +67,14 @@ public class PlaneController {
         turnslider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 turnValueLabel.setText(String.format("%.0f" , newValue));
-                plane.setyAcceleration(1);
+                plane.setxAcceleration((double)newValue);
             }
         });
 
         thrustSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 thrustLabel.setText(String.format("%.0f",newValue));
+                plane.setyAcceleration((double)newValue);
             }
         });
 
@@ -88,7 +89,7 @@ public class PlaneController {
 
     public void move(double elipseCenterZ) {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), event -> {
-            System.out.println(circle.getyPosition());
+//            System.out.println(circle.getyPosition());
             UpdateShapes.updateElipse(targetElipse, circle, plane, elipseCenterZ);
         }));
         timeline.setCycleCount(Animation.INDEFINITE);

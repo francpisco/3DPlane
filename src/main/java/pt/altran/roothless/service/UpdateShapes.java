@@ -18,7 +18,7 @@ public class UpdateShapes {
         double distanceZ = circle.getzPosition() - plane.getzPosition();
 
         double distanceToCenter = Math.sqrt(distanceX*distanceX + distanceZ*distanceZ);
-        System.out.println("Distance to center = " + distanceToCenter);
+//        System.out.println("Distance to center = " + distanceToCenter);
 
         resize(distanceY, distanceToCenter, targetElipse);
         recenter(distanceX, distanceZ, distanceY, targetElipse, elipseCenter);

@@ -84,6 +84,8 @@ public class Plane {
     }
 
     public void setxAcceleration(double xAcceleration) {
+
+        System.out.println("turning value is = " + xAcceleration);
         this.xAcceleration = xAcceleration;
     }
 
@@ -92,6 +94,8 @@ public class Plane {
     }
 
     public void setyAcceleration(double yAcceleration) {
+
+        System.out.println("accelaration value is " + yAcceleration);
         this.yAcceleration = yAcceleration;
     }
 

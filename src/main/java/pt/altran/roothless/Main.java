@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import pt.altran.roothless.Controller.FlightControl;
 import pt.altran.roothless.Controller.PlaneController;
 import pt.altran.roothless.model.Circle;
 import pt.altran.roothless.model.Plane;
@@ -15,31 +14,7 @@ import pt.altran.roothless.service.Loop;
 public class Main extends Application {
 
 
-//    @Override
-//    public void start(Stage primaryStage) throws Exception{
-//
-//
-//        Circle circle = new Circle();
-//        Plane plane = new Plane();
-//
-//        Loop loop = new Loop(plane, circle);
-//        Thread planeLoop = new Thread(loop);
-//        planeLoop.start();
-//
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FlightView.fxml"));
-//
-//        Parent root = fxmlLoader.load();
-//
-//        FlightControl flightControl = (FlightControl) fxmlLoader.getController();
-//        flightControl.setCircle(circle);
-//        flightControl.setPlane(plane);
-//
-//        primaryStage.setTitle("Flight of the Conchords");
-//        primaryStage.setScene(new Scene(root, 800, 700));
-//        primaryStage.show();
-//
-//    }
-
+    //TODO : ELLIPSE VAZIA; COPCKPIT POR CIMA DA ELLIPSE
     @Override
     public void start(Stage primaryStage) throws Exception{
 
