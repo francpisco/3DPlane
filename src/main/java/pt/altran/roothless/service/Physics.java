@@ -10,7 +10,7 @@ public class Physics {
     }
 
     public static double yVelocityCalc(double yAcceleration, double currentYVel, double timeInterval) {
-        return yAcceleration * timeInterval + currentYVel;
+        return (yAcceleration - currentYVel * Constants.DRAG_COEFICIENT) * timeInterval + currentYVel;
     }
 
     public static double xVelocityCalc(double xAcceleration, double currentXVel, double timeInterval) {
