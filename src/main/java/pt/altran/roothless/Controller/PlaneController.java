@@ -24,6 +24,29 @@ import java.util.ResourceBundle;
  */
 public class PlaneController {
 
+    public ToggleButton parkingbrakes;
+    public ToggleButton power;
+    public ToggleButton engine2;
+    public ToggleButton engine1;
+    public ToggleButton engine3;
+    public ToggleButton engine4;
+    public ToggleButton fuelpump;
+    public ToggleButton apu;
+    public ToggleButton lights;
+    public ToggleButton com;
+
+    private boolean parkingbrakesbol = false;
+    private boolean powerbol = false;
+    private boolean engine1bol = false;
+    private boolean engine2bol = false;
+    private boolean engine3bol = false;
+    private boolean engine4bol = false;
+    private boolean fuelpumpbol = false;
+    private boolean apubol = false;
+    private boolean lightsbol = false;
+    private boolean combol = false;
+
+
     private Circle circle;
     private Plane plane;
 
@@ -58,6 +81,8 @@ public class PlaneController {
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
 
+    private boolean isreadytofly;
+
     @FXML
     void initialize() {
 
@@ -66,24 +91,41 @@ public class PlaneController {
 
         turnslider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                turnValueLabel.setText(String.format("%.0f" , newValue));
-                plane.setxAcceleration((double)newValue);
+                turnValueLabel.setText(String.format("%.0f", newValue));
+                plane.setxAcceleration((double) newValue);
+
             }
         });
 
         thrustSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                thrustLabel.setText(String.format("%.0f",newValue));
-                plane.setyAcceleration((double)newValue/10);
+
+                thrustLabel.setText(String.format("%.0f", newValue));
+                System.out.println("ready to fly value " + isreadytofly);
+                isReadyToFly();
+                if (isreadytofly) {
+                    plane.setyAcceleration((double) newValue / 10);
+                }
             }
         });
 
         flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                flapsLabel.setText(String.format("%.0f",newValue));
+                flapsLabel.setText(String.format("%.0f", newValue));
             }
         });
 
+        landingGearButton.setStyle("-fx-background-color: red;");
+        parkingbrakes.setStyle("-fx-background-color: red;");
+        power.setStyle("-fx-background-color: red;");
+        engine2.setStyle("-fx-background-color: red;");
+        engine1.setStyle("-fx-background-color: red;");
+        engine3.setStyle("-fx-background-color: red;");
+        engine4.setStyle("-fx-background-color: red;");
+        fuelpump.setStyle("-fx-background-color: red;");
+        apu.setStyle("-fx-background-color: red;");
+        lights.setStyle("-fx-background-color: red;");
+        com.setStyle("-fx-background-color: red;");
 
     }
 
@@ -106,19 +148,156 @@ public class PlaneController {
 
     public void landingGear(ActionEvent actionEvent) {
 
-        System.out.println("enter landing");
-
-        if(LandingGearUp) {
-            System.out.println("setting to green");
-            landingGearButton.setStyle("-fx-background-color: green;");
-            LandingGearUp = false;
-        }else {
-            System.out.println("setting to red");
-            landingGearButton.setStyle("-fx-background-color: red;");
-            LandingGearUp = true;
+        if (powerbol && apubol) {
+            if (LandingGearUp) {
+                landingGearButton.setStyle("-fx-background-color: green;");
+                LandingGearUp = false;
+            } else {
+                landingGearButton.setStyle("-fx-background-color: red;");
+                LandingGearUp = true;
+            }
         }
 
     }
 
+    public void parkingbrakes(ActionEvent actionEvent) {
 
+        if (powerbol && apubol && thrustLabel.getText().equals("0")) {
+            if (!parkingbrakesbol) {
+                parkingbrakes.setStyle("-fx-background-color: green;");
+                parkingbrakesbol = true;
+
+            } else {
+                parkingbrakes.setStyle("-fx-background-color: red;");
+                parkingbrakesbol = false;
+
+            }
+        }
+    }
+
+    public void power(ActionEvent actionEvent) {
+
+        if (powerbol) {
+            power.setStyle("-fx-background-color: red;");
+            powerbol = false;
+        } else {
+            power.setStyle("-fx-background-color: green;");
+            powerbol = true;
+        }
+    }
+
+    public void engine1(ActionEvent actionEvent) {
+
+
+        if (powerbol && apubol && fuelpumpbol) {
+            if (!engine1bol) {
+                engine1.setStyle("-fx-background-color: green;");
+                engine1bol = true;
+            } else {
+                engine1.setStyle("-fx-background-color: red;");
+                engine1bol = false;
+            }
+        }
+    }
+
+    public void engine2(ActionEvent actionEvent) {
+
+        if (powerbol && apubol && fuelpumpbol) {
+            if (!engine2bol) {
+                engine2.setStyle("-fx-background-color: green;");
+                engine2bol = true;
+            } else {
+                engine2.setStyle("-fx-background-color: red;");
+                engine2bol = false;
+            }
+        }
+    }
+
+    public void engine3(ActionEvent actionEvent) {
+
+        if(powerbol && apubol && fuelpumpbol) {
+            if (!engine3bol) {
+                engine3.setStyle("-fx-background-color: green;");
+                engine3bol = true;
+            } else {
+                engine3.setStyle("-fx-background-color: red;");
+                engine3bol = false;
+            }
+        }
+    }
+
+    public void engine4(ActionEvent actionEvent) {
+
+        if(powerbol && apubol && fuelpumpbol) {
+            if (!engine4bol) {
+                engine4.setStyle("-fx-background-color: green;");
+                engine4bol = true;
+            } else {
+                engine4.setStyle("-fx-background-color: red;");
+                engine4bol = false;
+            }
+        }
+    }
+
+    public void fuelpump(ActionEvent actionEvent) {
+
+        if (powerbol && apubol) {
+            if (!fuelpumpbol) {
+                fuelpump.setStyle("-fx-background-color: green;");
+                fuelpumpbol = true;
+            } else {
+                fuelpump.setStyle("-fx-background-color: red;");
+                fuelpumpbol = false;
+            }
+        }
+    }
+
+    public void apu(ActionEvent actionEvent) {
+
+        if (powerbol) {
+            if (!apubol) {
+                apu.setStyle("-fx-background-color: green;");
+                apubol = true;
+            } else {
+                apu.setStyle("-fx-background-color: red;");
+                apubol = false;
+            }
+        }
+    }
+
+    public void lights(ActionEvent actionEvent) {
+
+        if (powerbol) {
+            if (!lightsbol) {
+                lights.setStyle("-fx-background-color: green;");
+                lightsbol = true;
+            } else {
+                lights.setStyle("-fx-background-color: red;");
+                lightsbol = false;
+            }
+        }
+    }
+
+    public void com(ActionEvent actionEvent) {
+
+        if (powerbol && apubol) {
+            if (!combol) {
+                com.setStyle("-fx-background-color: green;");
+                combol = true;
+            } else {
+                com.setStyle("-fx-background-color: red;");
+                combol = false;
+            }
+        }
+    }
+
+    public void isReadyToFly() {
+
+        if (parkingbrakesbol && powerbol && engine1bol && engine2bol && engine3bol && engine4bol && fuelpumpbol &&
+                apubol && lightsbol && combol) {
+            isreadytofly = true;
+        } else {
+            isreadytofly = false;
+        }
+    }
 }
