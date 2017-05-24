@@ -99,6 +99,7 @@ public class PlaneController {
 
         thrustSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
                 thrustLabel.setText(String.format("%.0f", newValue));
                 System.out.println("ready to fly value " + isreadytofly);
                 isReadyToFly();
