@@ -3,12 +3,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="master_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
    <children>
+      <Pane fx:id="window_pane" prefHeight="272.0" prefWidth="600.0" style="-fx-background-color: blue;">
+         <children>
+            <Ellipse fx:id="targetElipse" fill="#1f93ff00" layoutX="268.0" layoutY="98.0" radiusX="10.0" radiusY="8.0" stroke="#d11313" strokeType="INSIDE" strokeWidth="2.0" />
+         </children>
+         <effect>
+            <ColorAdjust brightness="0.55" contrast="0.38" hue="-0.21" saturation="-0.26" />
+         </effect>
+      </Pane>
       <Pane fx:id="cockpit_pane" layoutX="1.0" layoutY="272.0" prefHeight="128.0" prefWidth="600.0" style="-fx-background-color: gray;">
          <children>
             <Slider fx:id="turnslider" blockIncrement="1.0" layoutX="92.0" layoutY="90.0" max="50.0" min="-50.0" showTickLabels="true" showTickMarks="true" />
@@ -17,45 +26,40 @@
                <font>
                   <Font size="7.0" />
                </font></ToggleButton>
-            <Label fx:id="turnValueLabel" layoutX="146.0" layoutY="56.0" text="Label" />
-            <Label fx:id="thrustLabel" layoutX="48.0" layoutY="56.0" text="Label" />
+            <Label fx:id="turnValueLabel" layoutX="146.0" layoutY="56.0" text="0" />
+            <Label fx:id="thrustLabel" layoutX="48.0" layoutY="56.0" text="0" />
             <Slider fx:id="flapsSlider" blockIncrement="1.0" layoutX="287.0" layoutY="6.0" majorTickUnit="4.0" max="4.0" minorTickCount="1" orientation="VERTICAL" prefHeight="118.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />
             <Label fx:id="flapsLabel" layoutX="254.0" layoutY="55.0" text="Label" />
-            <ToggleButton layoutX="529.0" layoutY="42.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Parking Brakes">
+            <ToggleButton fx:id="parkingbrakes" layoutX="529.0" layoutY="42.0" mnemonicParsing="false" onAction="#parkingbrakes" prefHeight="25.0" prefWidth="56.0" text="Parking Brakes">
                <font>
                   <Font size="6.0" />
                </font>
             </ToggleButton>
-            <ToggleButton layoutX="350.0" layoutY="77.0" mnemonicParsing="false" text="POWER" />
-            <ToggleButton layoutX="384.0" layoutY="10.0" mnemonicParsing="false" text="Engine 2" />
-            <ToggleButton layoutX="314.0" layoutY="10.0" mnemonicParsing="false" text="Engine 1" />
-            <ToggleButton layoutX="313.0" layoutY="43.0" mnemonicParsing="false" text="Engine 3" />
-            <ToggleButton layoutX="385.0" layoutY="44.0" mnemonicParsing="false" text="Engine 4" />
-            <ToggleButton layoutX="529.0" layoutY="74.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="FUEL PUMP">
+            <ToggleButton fx:id="power" layoutX="350.0" layoutY="77.0" mnemonicParsing="false" onAction="#power" text="POWER" />
+            <ToggleButton fx:id="engine2" layoutX="384.0" layoutY="10.0" mnemonicParsing="false" onAction="#engine2" text="Engine 2" />
+            <ToggleButton fx:id="engine1" layoutX="314.0" layoutY="10.0" mnemonicParsing="false" onAction="#engine1" text="Engine 1" />
+            <ToggleButton fx:id="engine3" layoutX="313.0" layoutY="43.0" mnemonicParsing="false" onAction="#engine3" text="Engine 3" />
+            <ToggleButton fx:id="engine4" layoutX="385.0" layoutY="44.0" mnemonicParsing="false" onAction="#engine4" text="Engine 4" />
+            <ToggleButton fx:id="fuelpump" layoutX="529.0" layoutY="74.0" mnemonicParsing="false" onAction="#fuelpump" prefHeight="25.0" prefWidth="56.0" text="FUEL PUMP">
                <font>
                   <Font size="6.0" />
                </font>
             </ToggleButton>
-            <ToggleButton layoutX="464.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="A P U ">
+            <ToggleButton fx:id="apu" layoutX="464.0" layoutY="10.0" mnemonicParsing="false" onAction="#apu" prefHeight="25.0" prefWidth="56.0" text="A P U ">
                <font>
                   <Font size="6.0" />
                </font>
             </ToggleButton>
-            <ToggleButton layoutX="464.0" layoutY="43.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="LIGHTS">
+            <ToggleButton fx:id="lights" layoutX="464.0" layoutY="43.0" mnemonicParsing="false" onAction="#lights" prefHeight="25.0" prefWidth="56.0" text="LIGHTS">
                <font>
                   <Font size="6.0" />
                </font>
             </ToggleButton>
-            <ToggleButton layoutX="465.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="COM">
+            <ToggleButton fx:id="com" layoutX="465.0" layoutY="73.0" mnemonicParsing="false" onAction="#com" prefHeight="25.0" prefWidth="56.0" text="COM">
                <font>
                   <Font size="6.0" />
                </font>
             </ToggleButton>
-         </children>
-      </Pane>
-      <Pane fx:id="window_pane" prefHeight="144.0" prefWidth="600.0">
-         <children>
-            <Ellipse fx:id="targetElipse" fill="DODGERBLUE" layoutX="268.0" layoutY="98.0" radiusX="10.0" radiusY="8.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>
    </children>

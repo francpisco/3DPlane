@@ -18,7 +18,7 @@ public class Plane {
 
     private double xAcceleration;
     private double yAcceleration;
-    private double lift = 9.79;
+    private double lift = 9.8;
 
     public void update(double time) {
 
@@ -95,7 +95,7 @@ public class Plane {
 
     public void setyAcceleration(double yAcceleration) {
 
-        System.out.println("accelaration value is " + yAcceleration);
+       // System.out.println("accelaration value is " + yAcceleration);
         this.yAcceleration = yAcceleration;
     }
 

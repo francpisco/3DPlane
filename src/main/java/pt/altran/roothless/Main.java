@@ -14,7 +14,7 @@ import pt.altran.roothless.service.Loop;
 public class Main extends Application {
 
 
-    //TODO : ELLIPSE VAZIA; COPCKPIT POR CIMA DA ELLIPSE
+    //TODO : ELLIPSE VAZIA;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
