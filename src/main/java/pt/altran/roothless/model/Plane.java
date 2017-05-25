@@ -19,6 +19,10 @@ public class Plane {
     private double xAcceleration = 0.0001;
     private double yAcceleration;
 
+    private double roll;
+    private double pitch;
+    private double yaw;
+
     private double lift = 9.8;
 
 
