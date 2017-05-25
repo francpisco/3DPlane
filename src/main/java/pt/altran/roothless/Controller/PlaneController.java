@@ -16,6 +16,7 @@ import javafx.util.Duration;
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 import pt.altran.roothless.service.UpdateShapes;
+import pt.altran.roothless.service.UpdateWindowView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -94,7 +95,8 @@ public class PlaneController {
         turnslider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 turnValueLabel.setText(String.format("%.0f", newValue));
-                plane.setxAcceleration((double) newValue/1000);
+                //plane.setxAcceleration((double) newValue/1000);
+                plane.setRoll((double) newValue);
 
             }
         });
@@ -114,6 +116,7 @@ public class PlaneController {
         flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 flapsLabel.setText(String.format("%.0f", newValue));
+                plane.setPitch((double) newValue/100);
             }
         });
 
@@ -135,6 +138,7 @@ public class PlaneController {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), event -> {
 //            System.out.println(bubble.getyPosition());
             UpdateShapes.updateElipse(targetElipse, bubble, plane, elipseCenterZ);
+            UpdateWindowView.updateView(plane, groundRectangle);
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
