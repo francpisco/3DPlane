@@ -16,10 +16,10 @@ public class Plane {
     private double yVelocity = 0;
     private double zVelocity;
 
-    private double xAcceleration = 0.001;
+    private double xAcceleration = 0.0001;
     private double yAcceleration;
 
-    private double lift = 9.799;
+    private double lift = 9.8;
 
 
     public void update(double time) {

@@ -22,7 +22,7 @@ public class Loop implements Runnable {
 
         while (true) {
 
-            plane.update(0.10);
+            plane.update(0.020);
 
             if (circle.getyPosition() - plane.getyPosition() < 0) {
                 circle.setyPosition(plane.getyPosition() + Constants.CIRCLE_INITIAL_DIST);

@@ -92,7 +92,7 @@ public class PlaneController {
         turnslider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 turnValueLabel.setText(String.format("%.0f", newValue));
-                plane.setxAcceleration((double) newValue);
+                plane.setxAcceleration((double) newValue/1000);
 
             }
         });
@@ -104,7 +104,7 @@ public class PlaneController {
                 System.out.println("ready to fly value " + isreadytofly);
                 isReadyToFly();
                 if (isreadytofly) {
-                    plane.setyAcceleration((double) newValue / 10);
+                    plane.setyAcceleration((double) newValue / 2);
                 }
             }
         });
@@ -297,7 +297,7 @@ public class PlaneController {
                 apubol && lightsbol && combol) {
             isreadytofly = true;
         } else {
-            isreadytofly = false;
+            isreadytofly = true;
         }
     }
 }
