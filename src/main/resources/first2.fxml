@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <Slider fx:id="turnslider" blockIncrement="1.0" max="50.0" min="-50.0" showTickLabels="true" showTickMarks="true" />
+      <Slider fx:id="thrustSlider" orientation="VERTICAL" prefHeight="128.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />
+      <ToggleButton fx:id="landingGearButton" mnemonicParsing="false" onAction="#landingGear" prefHeight="25.0" prefWidth="56.0" text="Landing Gear">
+         <font>
+            <Font size="7.0" />
+         </font>
+      </ToggleButton>
+      <Label fx:id="turnValueLabel" text="0" />
+      <Label fx:id="thrustLabel" text="0" />
+      <Slider fx:id="flapsSlider" majorTickUnit="4.0" max="50.0" min="-50.0" minorTickCount="1" orientation="VERTICAL" prefHeight="118.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />
+      <Label fx:id="flapsLabel" text="0" />
+      <ToggleButton fx:id="parkingbrakes" mnemonicParsing="false" onAction="#parkingbrakes" prefHeight="25.0" prefWidth="56.0" text="Parking Brakes">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton fx:id="power" mnemonicParsing="false" onAction="#power" text="POWER" />
+      <ToggleButton fx:id="engine2" mnemonicParsing="false" onAction="#engine2" text="Engine 2" />
+      <ToggleButton fx:id="engine11" mnemonicParsing="false" onAction="#engine1" text="Engine 1" />
+      <ToggleButton fx:id="engine3" mnemonicParsing="false" onAction="#engine3" text="Engine 3" />
+      <ToggleButton fx:id="engine4" mnemonicParsing="false" onAction="#engine4" text="Engine 4" />
+      <ToggleButton fx:id="fuelpump" mnemonicParsing="false" onAction="#fuelpump" prefHeight="25.0" prefWidth="56.0" text="FUEL PUMP">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton fx:id="apu" mnemonicParsing="false" onAction="#apu" prefHeight="25.0" prefWidth="56.0" text="A P U ">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton fx:id="lights" mnemonicParsing="false" onAction="#lights" prefHeight="25.0" prefWidth="56.0" text="LIGHTS">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton fx:id="com" mnemonicParsing="false" onAction="#com" prefHeight="25.0" prefWidth="56.0" text="COM">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </ToggleButton>
+   </children>
+</AnchorPane>

@@ -12,6 +12,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Sphere;
 import javafx.util.Duration;
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
@@ -37,6 +38,7 @@ public class PlaneController {
     public ToggleButton lights;
     public ToggleButton com;
     public Rectangle groundRectangle;
+    public Sphere theSun;
 
     private boolean parkingbrakesbol = false;
     private boolean powerbol = false;
