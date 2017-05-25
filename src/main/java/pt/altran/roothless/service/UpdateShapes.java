@@ -30,7 +30,7 @@ public class UpdateShapes {
     }
 
     private static void rotate(double distanceX, double distanceZ, Ellipse targetElipse) {
-        System.out.println("" + Math.atan(distanceZ/distanceX));
+
         targetElipse.setRotate((Math.atan(distanceZ/distanceX))*180/Math.PI);
     }
 

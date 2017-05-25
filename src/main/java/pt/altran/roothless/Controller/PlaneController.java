@@ -38,6 +38,7 @@ public class PlaneController {
     public ToggleButton com;
     public Rectangle groundRectangle;
     public Sphere theSun;
+    public Rectangle skyrectangle;
 
     private boolean parkingbrakesbol = false;
     private boolean powerbol = false;
@@ -67,7 +68,7 @@ public class PlaneController {
     private ToggleButton landingGearButton;
 
     @FXML
-    private Slider turnslider;
+    private Slider turnSlider;
     @FXML
     private Label turnValueLabel;
 
@@ -93,10 +94,10 @@ public class PlaneController {
         double elipseCenterZ = targetElipse.getCenterY();
         move(elipseCenterZ);
 
-        turnslider.valueProperty().addListener(new ChangeListener<Number>() {
+        turnSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 turnValueLabel.setText(String.format("%.0f", newValue));
-                plane.setxAcceleration((double) newValue/1000);
+                plane.setxAcceleration((double) newValue/100);
 
             }
         });
@@ -108,7 +109,7 @@ public class PlaneController {
                 System.out.println("ready to fly value " + isreadytofly);
                 isReadyToFly();
                 if (isreadytofly) {
-                    plane.setyAcceleration((double) newValue / 2);
+                    plane.setyAcceleration((double) newValue / 10);
                 }
             }
         });
@@ -135,7 +136,6 @@ public class PlaneController {
 
     public void move(double elipseCenterZ) {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), event -> {
-//            System.out.println(circle.getyPosition());
             UpdateShapes.updateElipse(targetElipse, circle, plane, elipseCenterZ);
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -332,7 +332,7 @@ public class PlaneController {
                 apubol && lightsbol && combol) {
             isreadytofly = true;
         } else {
-            isreadytofly = true;
+            isreadytofly = false;
         }
     }
 }

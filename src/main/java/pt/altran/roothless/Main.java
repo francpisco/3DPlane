@@ -15,10 +15,6 @@ import pt.altran.roothless.service.Loop;
 
 public class Main extends Application {
 
-
-    //TODO : change scren to green when pass a ellipse
-    //TODO : change sizes
-
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -30,7 +26,7 @@ public class Main extends Application {
         planeLoop.start();
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/first.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/first2.fxml"));
 
         Parent root = fxmlLoader.load();
 
@@ -38,17 +34,8 @@ public class Main extends Application {
         planeController.setCircle(circle);
         planeController.setPlane(plane);
 
-        Screen screen = Screen.getPrimary();
-
-        Rectangle2D bounds = screen.getVisualBounds();
-
-        primaryStage.setX(bounds.getMinX());
-        primaryStage.setY(bounds.getMinY());
-        primaryStage.setWidth(bounds.getWidth());
-        primaryStage.setHeight(bounds.getHeight());
-
         primaryStage.setTitle("Flight of the Conchords");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 1280, 800));
         primaryStage.show();
 
     }
