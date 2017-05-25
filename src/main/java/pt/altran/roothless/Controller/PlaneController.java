@@ -12,7 +12,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.shape.Ellipse;
 import javafx.util.Duration;
-import pt.altran.roothless.model.Circle;
+import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 import pt.altran.roothless.service.UpdateShapes;
 
@@ -47,7 +47,7 @@ public class PlaneController {
     private boolean combol = false;
 
 
-    private Circle circle;
+    private Bubble bubble;
     private Plane plane;
 
     @FXML
@@ -131,15 +131,15 @@ public class PlaneController {
 
     public void move(double elipseCenterZ) {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), event -> {
-//            System.out.println(circle.getyPosition());
-            UpdateShapes.updateElipse(targetElipse, circle, plane, elipseCenterZ);
+//            System.out.println(bubble.getyPosition());
+            UpdateShapes.updateElipse(targetElipse, bubble, plane, elipseCenterZ);
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
 
-    public void setCircle(Circle circle) {
-        this.circle = circle;
+    public void setBubble(Bubble bubble) {
+        this.bubble = bubble;
     }
 
     public void setPlane(Plane plane) {

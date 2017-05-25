@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleButton?>
@@ -9,10 +15,9 @@
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
+<AnchorPane prefHeight="450.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
    <children>
-      <Pane fx:id="window_pane" style="-fx-background-color: blue;">
+      <Pane fx:id="window_pane" prefHeight="290.0" prefWidth="775.0" style="-fx-background-color: blue;">
          <children>
             <Ellipse fx:id="targetElipse" fill="#1f93ff00" layoutX="268.0" layoutY="98.0" radiusX="10.0" radiusY="8.0" stroke="#d11313" strokeType="INSIDE" strokeWidth="2.0" />
          </children>
@@ -20,7 +25,7 @@
             <ColorAdjust brightness="0.55" contrast="0.38" hue="-0.21" saturation="-0.26" />
          </effect>
       </Pane>
-      <Pane fx:id="cockpit_pane" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="cockpit_pane" layoutY="295.0" prefHeight="155.0" prefWidth="775.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="295.0">
          <children>
             <Slider fx:id="turnslider" blockIncrement="1.0" layoutX="80.0" layoutY="90.0" max="50.0" min="-50.0" showTickLabels="true" showTickMarks="true" />
             <Slider fx:id="thrustSlider" layoutX="23.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="128.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />

@@ -1,7 +1,7 @@
 package pt.altran.roothless.service;
 
 import javafx.scene.shape.Ellipse;
-import pt.altran.roothless.model.Circle;
+import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 
 
@@ -11,11 +11,11 @@ import pt.altran.roothless.model.Plane;
 public class UpdateShapes {
 
 
-    public static void updateElipse(Ellipse targetElipse, Circle circle, Plane plane, double elipseCenter) {
+    public static void updateElipse(Ellipse targetElipse, Bubble bubble, Plane plane, double elipseCenter) {
 
-        double distanceY = circle.getyPosition() - plane.getyPosition();
-        double distanceX = circle.getxPosition() - plane.getxPosition();
-        double distanceZ = circle.getzPosition() - plane.getzPosition();
+        double distanceY = bubble.getyPosition() - plane.getyPosition();
+        double distanceX = bubble.getxPosition() - plane.getxPosition();
+        double distanceZ = bubble.getzPosition() - plane.getzPosition();
 
         double distanceToCenter = Math.sqrt(distanceX*distanceX + distanceZ*distanceZ);
         double distanceToCCorrected = (distanceToCenter < 20 ? 0 : distanceToCenter);

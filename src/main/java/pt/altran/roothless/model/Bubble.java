@@ -6,7 +6,7 @@ import pt.altran.roothless.service.Constants;
 /**
  * Created by Altran on 23/05/2017.
  */
-public class Circle {
+public class Bubble {
 
     private double xPosition;
     private double yPosition = Constants.CIRCLE_INITIAL_DIST;

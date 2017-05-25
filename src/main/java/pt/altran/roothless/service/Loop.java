@@ -1,7 +1,7 @@
 package pt.altran.roothless.service;
 
 
-import pt.altran.roothless.model.Circle;
+import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 
 /**
@@ -10,11 +10,11 @@ import pt.altran.roothless.model.Plane;
 public class Loop implements Runnable {
 
     Plane plane;
-    Circle circle;
+    Bubble bubble;
 
-    public Loop(Plane plane, Circle circle) {
+    public Loop(Plane plane, Bubble bubble) {
         this.plane = plane;
-        this.circle = circle;
+        this.bubble = bubble;
     }
 
     @Override
@@ -24,8 +24,8 @@ public class Loop implements Runnable {
 
             plane.update(0.020);
 
-            if (circle.getyPosition() - plane.getyPosition() < 0) {
-                circle.setyPosition(plane.getyPosition() + Constants.CIRCLE_INITIAL_DIST);
+            if (bubble.getyPosition() - plane.getyPosition() < 0) {
+                bubble.setyPosition(plane.getyPosition() + Constants.CIRCLE_INITIAL_DIST);
             }
 
             try {

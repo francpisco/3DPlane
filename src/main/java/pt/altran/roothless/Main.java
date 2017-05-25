@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import pt.altran.roothless.Controller.PlaneController;
-import pt.altran.roothless.model.Circle;
+import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 import pt.altran.roothless.service.Loop;
 
@@ -22,10 +22,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Circle circle = new Circle();
+        Bubble bubble = new Bubble();
         Plane plane = new Plane();
 
-        Loop loop = new Loop(plane, circle);
+        Loop loop = new Loop(plane, bubble);
         Thread planeLoop = new Thread(loop);
         planeLoop.start();
 
@@ -35,7 +35,7 @@ public class Main extends Application {
         Parent root = fxmlLoader.load();
 
         PlaneController planeController = fxmlLoader.getController();
-        planeController.setCircle(circle);
+        planeController.setBubble(bubble);
         planeController.setPlane(plane);
 
         Screen screen = Screen.getPrimary();
