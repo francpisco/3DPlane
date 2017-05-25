@@ -3,24 +3,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
+<AnchorPane prefHeight="343.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
    <children>
-      <Pane fx:id="window_pane" style="-fx-background-color: blue;">
-         <children>
-            <Ellipse fx:id="targetElipse" fill="#1f93ff00" layoutX="268.0" layoutY="98.0" radiusX="10.0" radiusY="8.0" stroke="#d11313" strokeType="INSIDE" strokeWidth="2.0" />
-         </children>
-         <effect>
-            <ColorAdjust brightness="0.55" contrast="0.38" hue="-0.21" saturation="-0.26" />
-         </effect>
-      </Pane>
-      <Pane fx:id="cockpit_pane" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="cockpit_pane" layoutX="1.0" layoutY="214.0" style="-fx-background-color: gray;">
          <children>
             <Slider fx:id="turnslider" blockIncrement="1.0" layoutX="80.0" layoutY="90.0" max="50.0" min="-50.0" showTickLabels="true" showTickMarks="true" />
             <Slider fx:id="thrustSlider" layoutX="23.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="128.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />
@@ -29,7 +20,7 @@
                   <Font size="7.0" />
                </font>
             </ToggleButton>
-            <Label fx:id="turnValueLabel" layoutX="146.0" layoutY="56.0" text="0" />
+            <Label fx:id="turnValueLabel" text="0" />
             <Label fx:id="thrustLabel" layoutX="48.0" layoutY="56.0" text="0" />
             <Slider fx:id="flapsSlider" layoutX="287.0" layoutY="6.0" majorTickUnit="4.0" max="50.0" min="-50.0" minorTickCount="1" orientation="VERTICAL" prefHeight="118.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />
             <Label fx:id="flapsLabel" layoutX="251.0" layoutY="56.0" text="0" />
@@ -65,5 +56,8 @@
             </ToggleButton>
          </children>
       </Pane>
+      <Rectangle fx:id="skyrectangle" arcHeight="5.0" arcWidth="5.0" fill="#1fffbf" height="214.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="586.0" />
+      <Rectangle fx:id="groundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#69ff6e" height="103.0" layoutX="1.0" layoutY="111.0" stroke="BLACK" strokeType="INSIDE" width="586.0" />
+      <Ellipse fx:id="targetElipse" fill="#1f93ff00" layoutX="283.0" layoutY="145.0" radiusX="10.0" radiusY="8.0" stroke="#d11313" strokeType="INSIDE" strokeWidth="2.0" />
    </children>
 </AnchorPane>
