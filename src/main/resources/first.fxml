@@ -10,9 +10,13 @@
 <?import javafx.scene.shape.Sphere?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="343.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
+<AnchorPane prefHeight="294.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
    <children>
-      <Pane fx:id="cockpit_pane" layoutX="1.0" layoutY="214.0" style="-fx-background-color: gray;">
+      <Rectangle fx:id="skyrectangle" arcHeight="5.0" arcWidth="5.0" fill="#1fffbf" height="344.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="691.0" />
+      <Rectangle fx:id="groundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#69ff6e" height="277.0" layoutX="-35.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="727.0" />
+      <Sphere fx:id="theSun" layoutX="164.0" layoutY="62.0" radius="20.0" />
+      <Ellipse fx:id="targetElipse" fill="#1f93ff00" layoutX="283.0" layoutY="145.0" radiusX="10.0" radiusY="8.0" stroke="#d11313" strokeType="INSIDE" strokeWidth="2.0" />
+      <Pane fx:id="cockpit_pane" layoutX="55.0" layoutY="214.0" style="-fx-background-color: gray;">
          <children>
             <Slider fx:id="turnslider" blockIncrement="1.0" layoutX="80.0" layoutY="90.0" max="50.0" min="-50.0" showTickLabels="true" showTickMarks="true" />
             <Slider fx:id="thrustSlider" layoutX="23.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="128.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" />
@@ -57,9 +61,5 @@
             </ToggleButton>
          </children>
       </Pane>
-      <Rectangle fx:id="skyrectangle" arcHeight="5.0" arcWidth="5.0" fill="#1fffbf" height="214.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="586.0" />
-      <Sphere fx:id="theSun" layoutX="164.0" layoutY="62.0" radius="20.0" />
-      <Rectangle fx:id="groundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#69ff6e" height="103.0" layoutX="1.0" layoutY="111.0" stroke="BLACK" strokeType="INSIDE" width="586.0" />
-      <Ellipse fx:id="targetElipse" fill="#1f93ff00" layoutX="283.0" layoutY="145.0" radiusX="10.0" radiusY="8.0" stroke="#d11313" strokeType="INSIDE" strokeWidth="2.0" />
    </children>
 </AnchorPane>
