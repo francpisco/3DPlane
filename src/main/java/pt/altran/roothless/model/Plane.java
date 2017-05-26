@@ -45,6 +45,7 @@ public class Plane {
 
     public void update(double time) {
 
+        System.out.println();
         yawAcceleration = 10 * Math.asin(Math.tan(pitchAcceleration) * Math.sin(rollAcceleration));
 
         roll = Physics.angleCalc(roll, rollVelocity, rollAcceleration, time);
@@ -59,6 +60,7 @@ public class Plane {
         speed = Physics.VelocityCalc(acceleration, speed, time);
 
         System.out.println("roll = " + roll + "; pitch = " + pitch + "; yaw = " + yaw);
+        System.out.println("yawVelocity = " + yawVelocity);
 
 
 

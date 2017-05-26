@@ -189,8 +189,6 @@ public class PlaneController {
 
     public void power(ActionEvent actionEvent) {
 
-        groundRectangle.setY(200);
-
         if (!powerbol) {
             power.setStyle("-fx-background-color: green;");
             powerbol = true;

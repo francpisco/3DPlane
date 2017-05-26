@@ -33,8 +33,8 @@ public class UpdateWindowView {
     }
 
     private static void updatePitch(Plane plane, Rectangle rectangle) {
-        System.out.println("Before" + rectangle.getY());
-        //rectangle.setY((Math.tan(plane.getPitch()) * 214) + 71);
-        System.out.println("After" + rectangle.getY());
+        //System.out.println("Before" + rectangle.getY());
+        rectangle.setY((Math.tan(plane.getPitch()) * 214) + 71);
+        //System.out.println("After" + rectangle.getY());
     }
 }
