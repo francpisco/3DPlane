@@ -120,7 +120,7 @@ public class PlaneController {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 flapsLabel.setText(String.format("%.0f", newValue));
                 //plane.setPitchAcceleration((double) newValue/100);
-                plane.moveFlaps((double) newValue/10);
+                plane.moveFlaps((double) newValue/1000);
             }
         });
 
@@ -189,7 +189,6 @@ public class PlaneController {
 
     public void power(ActionEvent actionEvent) {
 
-        groundRectangle.setY(200);
 
         if (!powerbol) {
             power.setStyle("-fx-background-color: green;");

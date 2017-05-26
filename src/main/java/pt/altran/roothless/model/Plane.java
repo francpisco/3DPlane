@@ -58,7 +58,7 @@ public class Plane {
         distance = Physics.distanceCalc(distance, speed, acceleration, time);
         speed = Physics.VelocityCalc(acceleration, speed, time);
 
-        System.out.println("roll = " + roll + "; pitch = " + pitch + "; yaw = " + yaw);
+        //System.out.println("roll = " + roll + "; pitch = " + pitch + "; yaw = " + yaw);
 
 
 
