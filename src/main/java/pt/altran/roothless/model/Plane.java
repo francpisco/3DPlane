@@ -20,11 +20,11 @@ public class Plane {
     private double yAcceleration;
     private double lift = 9.8;
 
-    private double throtle;
+    private double throtle; // TODO thrust label
     private double elevatorRight;
     private double elevatorLeft;
     private double flaps;
-    private double rudder;
+    private double rudder; //TODO rudder Label
 
     private double roll;
     private double pitch;

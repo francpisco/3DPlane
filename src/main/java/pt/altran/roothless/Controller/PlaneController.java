@@ -1,5 +1,7 @@
 package pt.altran.roothless.Controller;
 
+import eu.hansolo.medusa.Gauge;
+import eu.hansolo.medusa.GaugeBuilder;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -42,6 +44,8 @@ public class PlaneController {
     public Sphere theSun;
     public Rectangle skyrectangle;
     public Circle targetCircle;
+    public Gauge altimeter;
+    public Gauge speedLcd;
 
     private boolean parkingbrakesbol = false;
     private boolean powerbol = false;
@@ -94,6 +98,7 @@ public class PlaneController {
     @FXML
     void initialize() {
 
+
         move();
 
         turnSlider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -120,10 +125,13 @@ public class PlaneController {
         flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 flapsLabel.setText(String.format("%.0f", newValue));
+                altimeter.setValue((double)newValue);
                 //plane.setPitchAcceleration((double) newValue/100);
                 plane.moveFlaps((double) newValue/1000);
             }
         });
+
+
 
         landingGearButton.setStyle("-fx-background-color: red;");
         parkingbrakes.setStyle("-fx-background-color: red;");
