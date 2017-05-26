@@ -1,6 +1,8 @@
 package pt.altran.roothless.service;
 
+import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
+import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 
 /**
@@ -8,7 +10,16 @@ import pt.altran.roothless.model.Plane;
  */
 public class UpdateWindowView {
 
-    public static void updateView(Plane plane, Rectangle rectangle) {
+    public static void updateView(Plane plane, Rectangle rectangle, Ellipse ellipse, Bubble bubble) {
+
+        double deltaX = plane.getxPosition() - bubble.getxPosition();
+        double deltaY = plane.getyPosition() - bubble.getyPosition();
+        double deltaZ = plane.getzPosition() - bubble.getzPosition();
+
+        double angleH = Math.atan(deltaX/deltaY);
+        double angleV = Math.atan(deltaZ/deltaY);
+
+        ellipse.setCenterX((Math.tan(angleH) * 0.45) * 600);
 
         updatePitch(plane, rectangle);
 
@@ -18,6 +29,7 @@ public class UpdateWindowView {
 
     private static void updateRoll(Plane plane, Rectangle rectangle) {
         rectangle.setRotate(plane.getRoll());
+
     }
 
     private static void updatePitch(Plane plane, Rectangle rectangle) {

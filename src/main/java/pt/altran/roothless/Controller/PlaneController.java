@@ -98,7 +98,8 @@ public class PlaneController {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 turnValueLabel.setText(String.format("%.0f", newValue));
                 //plane.setxAcceleration((double) newValue/1000);
-                plane.setRoll((double) newValue);
+                //plane.setRoll((double) newValue);
+                plane.setRollAcceleration((double) newValue/10);
 
             }
         });
@@ -118,7 +119,7 @@ public class PlaneController {
         flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 flapsLabel.setText(String.format("%.0f", newValue));
-                plane.setPitch((double) newValue/100);
+                plane.setPitchAcceleration((double) newValue/1000);
             }
         });
 
@@ -140,7 +141,7 @@ public class PlaneController {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), event -> {
 //            System.out.println(bubble.getyPosition());
             UpdateShapes.updateElipse(targetElipse, bubble, plane, elipseCenterZ);
-            UpdateWindowView.updateView(plane, groundRectangle);
+            UpdateWindowView.updateView(plane, groundRectangle, targetElipse, bubble);
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();

@@ -24,13 +24,13 @@ public class UpdateShapes {
         double distanceToPCorrected = Math.sqrt(distanceY*distanceY + distanceToCCorrected*distanceToCCorrected);
 
         resize(distanceToPCorrected, distanceToCenter, targetElipse);
-        recenter(distanceX, distanceZ, distanceToPlane, targetElipse, elipseCenter);
+        //recenter(distanceX, distanceZ, distanceToPlane, targetElipse, elipseCenter);
         rotate(distanceX, distanceZ, targetElipse);
 
     }
 
     private static void rotate(double distanceX, double distanceZ, Ellipse targetElipse) {
-        System.out.println("" + Math.atan(distanceZ/distanceX));
+        //System.out.println("" + Math.atan(distanceZ/distanceX));
         targetElipse.setRotate((Math.atan(distanceZ/distanceX))*180/Math.PI);
     }
 
