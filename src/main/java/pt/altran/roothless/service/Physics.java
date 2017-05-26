@@ -17,8 +17,9 @@ public class Physics {
         return (acceleration - currentVel * Constants.DRAG_COEFICIENT) * timeInterval + currentVel;
     }
 
-    public static double distanceCalc(double initDistance, double initVelocity, double acceleration, double timeInterval) {
-        return initDistance + initVelocity * timeInterval + (1/2) * acceleration * timeInterval * timeInterval;
+    public static double distanceCalc(double initVelocity, double acceleration, double timeInterval) {
+        return initVelocity * timeInterval + (1/2) * (acceleration - initVelocity
+                * Constants.DRAG_COEFICIENT) * timeInterval * timeInterval;
     }
 
     public static double angleCalc(double initAngle, double initAngularVel, double angularAccel, double timeInterval) {
@@ -27,5 +28,9 @@ public class Physics {
 
     public static double angularVelCalc(double initAngularVel, double angularAccel, double timeInterval) {
         return (angularAccel - initAngularVel * Constants.ROT_INERCIA) * timeInterval + initAngularVel;
+    }
+
+    public static double yawVelCalc(double initAngularVel, double angularAccel, double timeInterval) {
+        return angularAccel * timeInterval + initAngularVel;
     }
 }

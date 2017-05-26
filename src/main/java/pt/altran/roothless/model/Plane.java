@@ -45,8 +45,10 @@ public class Plane {
 
     public void update(double time) {
 
-        System.out.println();
-        yawAcceleration = 10 * Math.asin(Math.tan(pitchAcceleration) * Math.sin(rollAcceleration));
+        System.out.println("pitchAcceleration = " + pitchAcceleration + "; rollAcceleration = " + rollAcceleration);
+        //yawAcceleration = Math.atan(Math.tan(pitchAcceleration) * Math.sin(rollAcceleration));
+        yawAcceleration = rollAcceleration * pitchAcceleration;
+        yawVelocity = Physics.yawVelCalc(yawVelocity, yawAcceleration, time);
 
         roll = Physics.angleCalc(roll, rollVelocity, rollAcceleration, time);
         pitch = Physics.angleCalc(pitch, pitchVelocity, pitchAcceleration, time);
@@ -54,16 +56,20 @@ public class Plane {
 
         rollVelocity = Physics.angularVelCalc(rollVelocity, rollAcceleration, time);
         pitchVelocity = Physics.angularVelCalc(pitchVelocity, pitchAcceleration, time);
-        yawVelocity = Physics.angularVelCalc(yawVelocity, yawAcceleration, time);
 
-        distance = Physics.distanceCalc(distance, speed, acceleration, time);
+
+        distance = Physics.distanceCalc(speed, acceleration, time);
         speed = Physics.VelocityCalc(acceleration, speed, time);
 
         System.out.println("roll = " + roll + "; pitch = " + pitch + "; yaw = " + yaw);
         System.out.println("yawVelocity = " + yawVelocity);
 
+        zPosition = zPosition + distance * Math.sin(pitch) * Math.cos(roll);
+        yPosition = yPosition + distance * Math.cos(yaw);
+        xPosition = xPosition + distance * Math.sin(yaw);
 
-
+        System.out.println("zPosition = " + zPosition + "; yPosition = " + yPosition + "; xPosition = "
+                + xPosition);
 
 
     }

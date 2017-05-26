@@ -1,5 +1,6 @@
 package pt.altran.roothless.service;
 
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 import pt.altran.roothless.model.Bubble;
@@ -10,7 +11,7 @@ import pt.altran.roothless.model.Plane;
  */
 public class UpdateWindowView {
 
-    public static void updateView(Plane plane, Rectangle rectangle, Ellipse ellipse, Bubble bubble) {
+    public static void updateView(Plane plane, Rectangle rectangle, Circle circle, Bubble bubble) {
 
         double deltaX = plane.getxPosition() - bubble.getxPosition();
         double deltaY = plane.getyPosition() - bubble.getyPosition();
@@ -19,12 +20,27 @@ public class UpdateWindowView {
         double angleH = Math.atan(deltaX/deltaY);
         double angleV = Math.atan(deltaZ/deltaY);
 
-        ellipse.setCenterX((Math.tan(angleH) * 0.45) * 600);
+        double distanceToCenter = Math.sqrt(deltaX*deltaX + deltaZ*deltaZ);
+        double distanceToPlane = Math.sqrt(deltaY*deltaY + distanceToCenter*distanceToCenter);
+
+        resize(distanceToPlane, distanceToCenter, circle);
+        recenter(deltaX, deltaZ, distanceToPlane, circle);
+
+        //circle.setCenterX((Math.tan(angleH) * 0.45) * 600);
 
         updatePitch(plane, rectangle);
 
         updateRoll(plane, rectangle);
 
+    }
+
+    private static void recenter(double distanceX, double distanceZ, double distanceToPlane, Circle circle) {
+        circle.setCenterY(0.0 - (distanceZ*1000)/distanceToPlane);
+        circle.setCenterX(distanceX*1000/distanceToPlane);
+    }
+
+    private static void resize(double distanceToPlane, double distanceToCenter, Circle circle) {
+        circle.setRadius(2000.0/distanceToPlane);
     }
 
     private static void updateRoll(Plane plane, Rectangle rectangle) {

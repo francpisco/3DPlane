@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Sphere;
@@ -40,6 +41,7 @@ public class PlaneController {
     public Rectangle groundRectangle;
     public Sphere theSun;
     public Rectangle skyrectangle;
+    public Circle targetCircle;
 
     private boolean parkingbrakesbol = false;
     private boolean powerbol = false;
@@ -92,8 +94,7 @@ public class PlaneController {
     @FXML
     void initialize() {
 
-        double elipseCenterZ = targetElipse.getCenterY();
-        move(elipseCenterZ);
+        move();
 
         turnSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -111,7 +112,7 @@ public class PlaneController {
                 System.out.println("ready to fly value " + isreadytofly);
                 isReadyToFly();
                 if (isreadytofly) {
-                    plane.setyAcceleration((double) newValue / 10);
+                    plane.moveThrottle((double) newValue / 10);
                 }
             }
         });
@@ -138,11 +139,10 @@ public class PlaneController {
 
     }
 
-    public void move(double elipseCenterZ) {
+    public void move() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), event -> {
 
-            UpdateShapes.updateElipse(targetElipse, bubble, plane, elipseCenterZ);
-            UpdateWindowView.updateView(plane, groundRectangle, targetElipse, bubble);
+            UpdateWindowView.updateView(plane, groundRectangle, targetCircle, bubble);
 
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
