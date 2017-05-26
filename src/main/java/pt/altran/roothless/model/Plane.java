@@ -16,7 +16,7 @@ public class Plane {
     private double yVelocity;
     private double zVelocity;
 
-    private double xAcceleration = 0.0001;
+    private double xAcceleration;
     private double yAcceleration;
     private double lift = 9.8;
 
