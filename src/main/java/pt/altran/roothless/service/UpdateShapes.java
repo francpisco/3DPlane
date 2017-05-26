@@ -24,7 +24,7 @@ public class UpdateShapes {
         double distanceToPCorrected = Math.sqrt(distanceY*distanceY + distanceToCCorrected*distanceToCCorrected);
 
         resize(distanceToPCorrected, distanceToCenter, targetElipse);
-        //recenter(distanceX, distanceZ, distanceToPlane, targetElipse, elipseCenter);
+        recenter(distanceX, distanceZ, distanceToPlane, targetElipse, elipseCenter);
         rotate(distanceX, distanceZ, targetElipse);
 
     }
