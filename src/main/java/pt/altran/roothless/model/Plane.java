@@ -10,7 +10,7 @@ public class Plane {
     private double xPosition;
     private double yPosition;
     private double zPosition = 10000;
-    private double xVelocity = 1;
+    private double xVelocity;
     private double yVelocity;
     private double zVelocity;
 
@@ -26,6 +26,7 @@ public class Plane {
 
     private double roll;
     private double pitch;
+    private double pitchAux;
     private double yaw;
 
     private double rollVelocity;
@@ -48,7 +49,9 @@ public class Plane {
         roll = Physics.angleCalc(roll, rollVelocity, rollAcceleration, time);
 
         pitchVelocity = Physics.angularVelCalc(pitchVelocity, pitchAcceleration, time);
-        pitch = Physics.angleCalc(pitch, pitchVelocity, pitchAcceleration, time);
+        // TODO: 29/05/2017 limitar o pitch nao me parece a melhor ideia
+        pitchAux = Physics.angleCalc(pitch, pitchVelocity, pitchAcceleration, time);
+        pitch = (pitchAux > -1.35 ? pitchAux : -1.35);
         yawVelocity = Physics.yawVelCalc(yawVelocity, yawAcceleration, time);
         yaw = Physics.yawCalc(yaw, yawVelocity, yawAcceleration, time);
 

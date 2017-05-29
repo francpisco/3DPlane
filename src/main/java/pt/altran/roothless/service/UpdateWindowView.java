@@ -58,7 +58,8 @@ public class UpdateWindowView {
     }
 
     private static void updatePitch(Plane plane, Rectangle rectangle) {
-
+        System.out.println("Rectangle Y = " + rectangle.getY());
+        System.out.println("Plane pitch = " + plane.getPitch());
         rectangle.setY((Math.tan(plane.getPitch()) * 214) + 71);
     }
 }

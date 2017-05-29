@@ -153,10 +153,10 @@ public class PlaneController {
             altitudeLcd.setValue(plane.getzPosition());
             northLcd.setValue(plane.getyPosition());
             eastLcd.setValue(plane.getxPosition());
-            compassLcd.setValue(plane.getYaw());
-            pitchLcd.setValue(plane.getPitch());
+            compassLcd.setValue(plane.getYaw() * 180 / Math.PI);
+            pitchLcd.setValue(plane.getPitch() * 180 / Math.PI);
             speedLc.setValue(plane.getSpeed());
-            rollLcd.setValue(plane.getRoll());
+            rollLcd.setValue(plane.getRoll() * 180 / Math.PI);
 
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
