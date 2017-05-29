@@ -17,7 +17,7 @@ public class UpdateWindowView {
         double deltaY = plane.getyPosition() - bubble.getyPosition();
         double deltaZ = plane.getzPosition() - bubble.getzPosition();
 
-        double angleH = Math.atan(deltaX/deltaY);
+        double angleH = Math.atan(deltaX/deltaY) * 180 / Math.PI;
         double angleV = Math.atan(deltaZ/deltaY);
 
         double distanceToCenter = Math.sqrt(deltaX*deltaX + deltaZ*deltaZ);
@@ -32,9 +32,13 @@ public class UpdateWindowView {
 
         updateRoll(plane, rectangle);
 
+        double yawInDeg = plane.getYaw() * 180 / Math.PI;
+        System.out.println("angle H = " + angleH);
+        System.out.println("yaw = " + yawInDeg);
     }
 
     private static void recenter(double distanceX, double distanceZ, double distanceToPlane, Circle circle) {
+        System.out.println("circle X = " + circle.getCenterX());
         circle.setCenterY(0.0 - (distanceZ*1000)/distanceToPlane);
         circle.setCenterX(distanceX*1000/distanceToPlane);
     }

@@ -100,7 +100,7 @@ public class PlaneController {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 turnValueLabel.setText(String.format("%.0f", newValue));
 
-                plane.setRollAcceleration((double) newValue/10);
+                plane.moveRudder((double) newValue/100);
 
             }
         });

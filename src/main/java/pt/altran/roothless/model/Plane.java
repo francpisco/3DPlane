@@ -41,32 +41,31 @@ public class Plane {
     private double acceleration;
     private double speed;
     private double distance;
+    private double horizontalDistance;
 
 
     public void update(double time) {
 
-        System.out.println("pitchAcceleration = " + pitchAcceleration + "; rollAcceleration = " + rollAcceleration);
-        //yawAcceleration = Math.atan(Math.tan(pitchAcceleration) * Math.sin(rollAcceleration));
-        yawAcceleration = rollAcceleration * pitchAcceleration;
-        yawVelocity = Physics.yawVelCalc(yawVelocity, yawAcceleration, time);
-
         roll = Physics.angleCalc(roll, rollVelocity, rollAcceleration, time);
-        pitch = Physics.angleCalc(pitch, pitchVelocity, pitchAcceleration, time);
-        yaw = Physics.angleCalc(yaw, yawVelocity, yawAcceleration, time);
 
-        rollVelocity = Physics.angularVelCalc(rollVelocity, rollAcceleration, time);
         pitchVelocity = Physics.angularVelCalc(pitchVelocity, pitchAcceleration, time);
+        pitch = Physics.angleCalc(pitch, pitchVelocity, pitchAcceleration, time);
+
+        System.out.println("Yaw before = " + yaw);
+        System.out.println("Yaw Vel = " + yawVelocity + "; Yaw Accel = " + yawAcceleration);
+        yawVelocity = Physics.yawVelCalc(yawVelocity, yawAcceleration, time);
+        yaw = Physics.yawCalc(yaw, yawVelocity, yawAcceleration, time);
+        System.out.println("Yaw after = " + yaw);
 
 
         distance = Physics.distanceCalc(speed, acceleration, time);
         speed = Physics.VelocityCalc(acceleration, speed, time);
 
-        System.out.println("roll = " + roll + "; pitch = " + pitch + "; yaw = " + yaw);
-        System.out.println("yawVelocity = " + yawVelocity);
+        horizontalDistance = distance * Math.cos(pitch);
+        yPosition = yPosition + horizontalDistance * Math.cos(yaw);
+        xPosition = xPosition + horizontalDistance * Math.sin(yaw);
+        zPosition = zPosition + distance * Math.sin(pitch);
 
-        zPosition = zPosition + distance * Math.sin(pitch) * Math.cos(roll);
-        yPosition = yPosition + distance * Math.cos(yaw);
-        xPosition = xPosition + distance * Math.sin(yaw);
 
         System.out.println("zPosition = " + zPosition + "; yPosition = " + yPosition + "; xPosition = "
                 + xPosition);
@@ -75,7 +74,8 @@ public class Plane {
     }
 
     public void moveRudder(double dValue) {
-        rollAcceleration = dValue;
+        rollVelocity = dValue * 10;
+        yawAcceleration = -dValue/10;
     }
 
     public void moveFlaps(double dValue) {
