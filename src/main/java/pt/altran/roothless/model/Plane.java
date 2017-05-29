@@ -84,12 +84,12 @@ public class Plane {
     }
 
     public void moveRudder(double dValue) {
-        rollVelocity = dValue * 10;
+        rollVelocity = -dValue * 10;
         yawAcceleration = -dValue/10;
     }
 
     public void moveFlaps(double dValue) {
-        pitchAcceleration = dValue;
+        pitchAcceleration = -dValue;
     }
 
     public void moveThrottle(double dValue) {
