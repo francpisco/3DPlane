@@ -131,7 +131,7 @@
        <Gauge fx:id="altitudeLcd" title="ALTITUDE" animated="true" skinType="LCD" GridPane.rowSpan="2" GridPane.columnSpan="2" GridPane.columnIndex="1" GridPane.rowIndex="9" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
 
        <Gauge fx:id="northLcd" title="NORTH" animated="true" skinType="LCD" GridPane.columnIndex="4" GridPane.rowIndex="8" minHeight="90.0" minWidth="100.0" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
-       <Gauge fx:id="southLcd" title="SOUTH" animated="true" skinType="LCD" GridPane.columnIndex="6" GridPane.rowIndex="8" minHeight="90.0" minWidth="100.0" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
+       <Gauge fx:id="eastLcd" title="EAST" animated="true" skinType="LCD" GridPane.columnIndex="6" GridPane.rowIndex="8" minHeight="90.0" minWidth="100.0" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
 
        <Gauge fx:id="compassLcd" title="COMPASS" animated="true" skinType="LCD" GridPane.columnIndex="4" GridPane.rowIndex="9" minHeight="90.0" minWidth="100.0" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
        <Gauge fx:id="pitchLcd" title="PITCH" animated="true" skinType="LCD" GridPane.columnIndex="6" GridPane.rowIndex="9" minHeight="90.0" minWidth="100.0" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>

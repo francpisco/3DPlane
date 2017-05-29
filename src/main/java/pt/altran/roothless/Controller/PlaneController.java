@@ -1,12 +1,9 @@
 package pt.altran.roothless.Controller;
 
 import eu.hansolo.medusa.Gauge;
-import eu.hansolo.medusa.GaugeBuilder;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -21,9 +18,7 @@ import javafx.scene.shape.Sphere;
 import javafx.util.Duration;
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
-import pt.altran.roothless.service.UpdateShapes;
 import pt.altran.roothless.service.UpdateWindowView;
-import sun.rmi.transport.proxy.CGIHandler;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,7 +46,7 @@ public class PlaneController {
 
     public Gauge altitudeLcd;
     public Gauge northLcd;
-    public Gauge southLcd;
+    public Gauge eastLcd;
     public Gauge compassLcd;
     public Gauge pitchLcd;
     public Gauge speedLc;
@@ -110,15 +105,6 @@ public class PlaneController {
     void initialize()  {
 
         move();
-
-        plane.zPositionPropertyProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-
-                altitudeLcd.setValue((double)newValue);
-            }
-        });
-
         turnSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 turnValueLabel.setText(String.format("%.0f", newValue));
@@ -131,7 +117,6 @@ public class PlaneController {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 
                 thrustLabel.setText(String.format("%.0f", newValue));
-                System.out.println("ready to fly value " + isreadytofly);
                 isReadyToFly();
                 if (isreadytofly) {
                     plane.moveThrottle((double) newValue / 10);
@@ -165,6 +150,13 @@ public class PlaneController {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), event -> {
 
             UpdateWindowView.updateView(plane, groundRectangle, targetCircle, bubble);
+            altitudeLcd.setValue(plane.getzPosition());
+            northLcd.setValue(plane.getyPosition());
+            eastLcd.setValue(plane.getxPosition());
+            compassLcd.setValue(plane.getYaw());
+            pitchLcd.setValue(plane.getPitch());
+            speedLc.setValue(plane.getSpeed());
+            rollLcd.setValue(plane.getRoll());
 
         }));
         timeline.setCycleCount(Animation.INDEFINITE);

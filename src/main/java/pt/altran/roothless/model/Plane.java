@@ -1,8 +1,5 @@
 package pt.altran.roothless.model;
 
-
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import pt.altran.roothless.service.Physics;
 
 /**
@@ -13,20 +10,6 @@ public class Plane {
     private double xPosition;
     private double yPosition;
     private double zPosition = 10000;
-    private DoubleProperty zPositionProperty = new SimpleDoubleProperty();
-
-    public double getzPositionProperty() {
-        return zPositionProperty.get();
-    }
-
-    public DoubleProperty zPositionPropertyProperty() {
-        return zPositionProperty;
-    }
-
-    public void setzPositionProperty(double zPositionProperty) {
-        this.zPositionProperty.set(zPositionProperty);
-    }
-
     private double xVelocity = 1;
     private double yVelocity;
     private double zVelocity;
@@ -59,19 +42,15 @@ public class Plane {
     private double horizontalDistance;
 
 
+
     public void update(double time) {
 
         roll = Physics.angleCalc(roll, rollVelocity, rollAcceleration, time);
 
         pitchVelocity = Physics.angularVelCalc(pitchVelocity, pitchAcceleration, time);
         pitch = Physics.angleCalc(pitch, pitchVelocity, pitchAcceleration, time);
-
-        System.out.println("Yaw before = " + yaw);
-        System.out.println("Yaw Vel = " + yawVelocity + "; Yaw Accel = " + yawAcceleration);
         yawVelocity = Physics.yawVelCalc(yawVelocity, yawAcceleration, time);
         yaw = Physics.yawCalc(yaw, yawVelocity, yawAcceleration, time);
-        System.out.println("Yaw after = " + yaw);
-
 
         distance = Physics.distanceCalc(speed, acceleration, time);
         speed = Physics.VelocityCalc(acceleration, speed, time);
@@ -94,6 +73,10 @@ public class Plane {
 
     public void moveThrottle(double dValue) {
         acceleration = dValue;
+    }
+
+    public double getSpeed() {
+        return speed;
     }
 
     public double getxPosition() {
