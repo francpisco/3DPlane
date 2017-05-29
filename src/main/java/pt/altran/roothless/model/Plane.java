@@ -1,6 +1,8 @@
 package pt.altran.roothless.model;
 
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import pt.altran.roothless.service.Physics;
 
 /**
@@ -11,6 +13,9 @@ public class Plane {
     private double xPosition;
     private double yPosition;
     private double zPosition = 10000;
+    private DoubleProperty zPositionProperty = new SimpleDoubleProperty();
+
+
 
     private double xVelocity = 1;
     private double yVelocity;
@@ -20,11 +25,11 @@ public class Plane {
     private double yAcceleration;
     private double lift = 9.8;
 
-    private double throtle; // TODO thrust label
+    private double throtle;
     private double elevatorRight;
     private double elevatorLeft;
     private double flaps;
-    private double rudder; //TODO rudder Label
+    private double rudder;
 
     private double roll;
     private double pitch;
@@ -45,7 +50,7 @@ public class Plane {
 
     public void update(double time) {
 
-        System.out.println("pitchAcceleration = " + pitchAcceleration + "; rollAcceleration = " + rollAcceleration);
+//        System.out.println("pitchAcceleration = " + pitchAcceleration + "; rollAcceleration = " + rollAcceleration);
         //yawAcceleration = Math.atan(Math.tan(pitchAcceleration) * Math.sin(rollAcceleration));
         yawAcceleration = rollAcceleration * pitchAcceleration;
         yawVelocity = Physics.yawVelCalc(yawVelocity, yawAcceleration, time);
@@ -61,16 +66,16 @@ public class Plane {
         distance = Physics.distanceCalc(speed, acceleration, time);
         speed = Physics.VelocityCalc(acceleration, speed, time);
 
-        System.out.println("roll = " + roll + "; pitch = " + pitch + "; yaw = " + yaw);
-        System.out.println("yawVelocity = " + yawVelocity);
+//        System.out.println("roll = " + roll + "; pitch = " + pitch + "; yaw = " + yaw);
+//        System.out.println("yawVelocity = " + yawVelocity);
 
         zPosition = zPosition + distance * Math.sin(pitch) * Math.cos(roll);
         yPosition = yPosition + distance * Math.cos(yaw);
         xPosition = xPosition + distance * Math.sin(yaw);
 
-        System.out.println("zPosition = " + zPosition + "; yPosition = " + yPosition + "; xPosition = "
-                + xPosition);
-
+//        System.out.println("zPosition = " + zPosition + "; yPosition = " + yPosition + "; xPosition = "
+//                + xPosition);
+//
 
     }
 

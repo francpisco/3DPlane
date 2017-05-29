@@ -5,6 +5,7 @@ import eu.hansolo.medusa.GaugeBuilder;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 import pt.altran.roothless.service.UpdateShapes;
 import pt.altran.roothless.service.UpdateWindowView;
+import sun.rmi.transport.proxy.CGIHandler;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,8 +46,15 @@ public class PlaneController {
     public Sphere theSun;
     public Rectangle skyrectangle;
     public Circle targetCircle;
-    public Gauge altimeter;
-    public Gauge speedLcd;
+
+    public Gauge altitudeLcd;
+    public Gauge northLcd;
+    public Gauge southLcd;
+    public Gauge compassLcd;
+    public Gauge pitchLcd;
+    public Gauge speedLc;
+    public Gauge rollLcd;
+
 
     private boolean parkingbrakesbol = false;
     private boolean powerbol = false;
@@ -60,7 +69,7 @@ public class PlaneController {
 
 
     private Bubble bubble;
-    private Plane plane;
+    private Plane plane = new Plane();
 
     @FXML
     private Ellipse targetElipse;
@@ -96,15 +105,13 @@ public class PlaneController {
     private boolean isreadytofly;
 
     @FXML
-    void initialize() {
-
+    void initialize()  {
 
         move();
 
         turnSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 turnValueLabel.setText(String.format("%.0f", newValue));
-
                 plane.setRollAcceleration((double) newValue/10);
 
             }
@@ -124,13 +131,10 @@ public class PlaneController {
 
         flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                flapsLabel.setText(String.format("%.0f", newValue));
-                altimeter.setValue((double)newValue);
-                //plane.setPitchAcceleration((double) newValue/100);
                 plane.moveFlaps((double) newValue/1000);
+
             }
         });
-
 
 
         landingGearButton.setStyle("-fx-background-color: red;");
