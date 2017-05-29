@@ -114,7 +114,7 @@ public class PlaneController {
         plane.zPositionPropertyProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                
+
                 altitudeLcd.setValue((double)newValue);
             }
         });
