@@ -5,6 +5,7 @@ import eu.hansolo.medusa.GaugeBuilder;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -40,6 +41,7 @@ public class PlaneController {
     public ToggleButton engine4;
     public ToggleButton fuelpump;
     public ToggleButton apu;
+
     public ToggleButton lights;
     public ToggleButton com;
     public Rectangle groundRectangle;
