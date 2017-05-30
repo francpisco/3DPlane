@@ -26,7 +26,6 @@ public class Main extends Application {
         Thread planeLoop = new Thread(loop);
         planeLoop.start();
 
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/first2.fxml"));
 
         Parent root = fxmlLoader.load();
