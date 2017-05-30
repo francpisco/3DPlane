@@ -6,14 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
 /**
- * Created by Altran on 30/05/2017.
+ * Created by Renato on 18/03/17.
  */
 
 public class Navigation {
@@ -75,22 +74,22 @@ public class Navigation {
 
             FXMLLoader fxmlLoader;
 
-            fxmlLoader = new FXMLLoader(getClass().getResource( view + ".fxml"));
+            fxmlLoader = new FXMLLoader(getClass().getResource(  view + ".fxml"));
 
-//            fxmlLoader.setControllerFactory(new Callback<Class<?>, Object>() {
-//                @Override
-//                public Object call(Class<?> param) {
-//
-//                    return controllers.get(param.getSimpleName());
-//                }
-//            });
+            fxmlLoader.setControllerFactory(new Callback<Class<?>, Object>() {
+                @Override
+                public Object call(Class<?> param) {
+
+                    return controllers.get(param.getSimpleName());
+                }
+            });
 
             root = fxmlLoader.load();
 
-//            Scene scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
-//            scenes.push(scene);
-//
-//            setScene(scene);
+            Scene scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
+            scenes.push(scene);
+
+            setScene(scene);
 
 
         } catch (IOException e) {

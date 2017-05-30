@@ -8,6 +8,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
@@ -26,7 +27,8 @@ import java.util.ResourceBundle;
 /**
  * Created by Altran on 23/05/2017.
  */
-public class PlaneController {
+
+public class PlaneController implements Initializable {
 
     public ToggleButton parkingbrakes;
     public ToggleButton power;
@@ -100,6 +102,11 @@ public class PlaneController {
     private URL location;
 
     private boolean isreadytofly;
+
+    public PlaneController(Bubble bubble, Plane plane) {
+        this.bubble = bubble;
+        this.plane = plane;
+    }
 
     @FXML
     void initialize()  {
@@ -356,5 +363,10 @@ public class PlaneController {
         } else {
             isreadytofly = true;
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }
