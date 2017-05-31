@@ -15,8 +15,6 @@ import pt.altran.roothless.service.Loop;
 
 public class Main extends Application {
 
-    Navigation navigation;
-
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -26,22 +24,6 @@ public class Main extends Application {
 
         navigation.setStage(primaryStage);
         navigation.loadScreen("/first");
-
-
-
-
-
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/first.fxml"));
-//
-//        Parent root = fxmlLoader.load();
-//
-//        PlaneController planeController = fxmlLoader.getController();
-//        planeController.setBubble(bubble);
-//        planeController.setPlane(plane);
-//
-//        primaryStage.setTitle("Flight of the Conchords");
-//        primaryStage.setScene(new Scene(root, 1280, 800));
-//        primaryStage.show();
 
     }
 
