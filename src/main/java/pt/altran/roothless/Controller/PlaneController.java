@@ -18,6 +18,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Sphere;
 import javafx.util.Duration;
 import org.springframework.stereotype.Controller;
+import pt.altran.roothless.Navigation;
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 import pt.altran.roothless.service.UpdateWindowView;
@@ -31,6 +32,9 @@ import java.util.ResourceBundle;
 
 @Controller
 public class PlaneController implements Initializable {
+
+
+    private Navigation navigation;
 
     public ToggleButton parkingbrakes;
     public ToggleButton power;
@@ -108,9 +112,11 @@ public class PlaneController implements Initializable {
     public PlaneController() {
     }
 
-    public PlaneController(Bubble bubble, Plane plane) {
+
+    public PlaneController(Bubble bubble, Plane plane, Navigation navigation) {
         this.bubble = bubble;
         this.plane = plane;
+        this.navigation = navigation;
     }
 
     @FXML
