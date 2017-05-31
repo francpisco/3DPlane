@@ -32,7 +32,7 @@ public class Main extends Application {
         Navigation navigation = applicationContext.getBean(Navigation.class);
 
         navigation.setStage(primaryStage);
-        navigation.loadScreen("/first2");
+        navigation.loadScreen("/first");
 
 
 
