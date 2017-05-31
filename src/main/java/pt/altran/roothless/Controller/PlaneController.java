@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import pt.altran.roothless.Navigation;
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
+import pt.altran.roothless.service.Loop;
 import pt.altran.roothless.service.UpdateWindowView;
 
 import java.net.URL;
@@ -36,6 +37,7 @@ public class PlaneController implements Initializable {
 
     private Navigation navigation;
 
+    Loop loop;
     public ToggleButton parkingbrakes;
     public ToggleButton power;
     public ToggleButton engine2;
@@ -48,7 +50,6 @@ public class PlaneController implements Initializable {
     public ToggleButton lights;
     public ToggleButton com;
     public Rectangle groundRectangle;
-    public Sphere theSun;
     public Rectangle skyrectangle;
     public Circle targetCircle;
 
@@ -110,58 +111,15 @@ public class PlaneController implements Initializable {
     private boolean isreadytofly;
 
     public PlaneController() {
+
     }
 
-
     public PlaneController(Bubble bubble, Plane plane, Navigation navigation) {
+
         this.bubble = bubble;
         this.plane = plane;
         this.navigation = navigation;
-    }
-
-    @FXML
-    void initialize()  {
-
-        move();
-        turnSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                turnValueLabel.setText(String.format("%.0f", newValue));
-                plane.moveRudder((double) newValue/100);
-
-            }
-        });
-
-        thrustSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-
-                thrustLabel.setText(String.format("%.0f", newValue));
-                isReadyToFly();
-                if (isreadytofly) {
-                    plane.moveThrottle((double) newValue / 10);
-                }
-            }
-        });
-
-        flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                plane.moveFlaps((double) newValue/1000);
-
-            }
-        });
-
-
-        landingGearButton.setStyle("-fx-background-color: red;");
-        parkingbrakes.setStyle("-fx-background-color: red;");
-        power.setStyle("-fx-background-color: red;");
-        engine2.setStyle("-fx-background-color: red;");
-        engine1.setStyle("-fx-background-color: red;");
-        engine3.setStyle("-fx-background-color: red;");
-        engine4.setStyle("-fx-background-color: red;");
-        fuelpump.setStyle("-fx-background-color: red;");
-        apu.setStyle("-fx-background-color: red;");
-        lights.setStyle("-fx-background-color: red;");
-        com.setStyle("-fx-background-color: red;");
-
+        //initialize();
     }
 
     public void move() {
@@ -378,6 +336,51 @@ public class PlaneController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("init");
 
+        loop = new Loop(plane,bubble);
+
+        Thread planeLoop = new Thread(loop);
+        planeLoop.start();
+
+        move();
+        turnSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                turnValueLabel.setText(String.format("%.0f", newValue));
+                plane.moveRudder((double) newValue/100);
+
+            }
+        });
+
+        thrustSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                thrustLabel.setText(String.format("%.0f", newValue));
+                isReadyToFly();
+                if (isreadytofly) {
+                    plane.moveThrottle((double) newValue / 10);
+                }
+            }
+        });
+
+        flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                plane.moveFlaps((double) newValue/1000);
+
+            }
+        });
+
+
+        landingGearButton.setStyle("-fx-background-color: red;");
+        parkingbrakes.setStyle("-fx-background-color: red;");
+        power.setStyle("-fx-background-color: red;");
+        engine2.setStyle("-fx-background-color: red;");
+        engine1.setStyle("-fx-background-color: red;");
+        engine3.setStyle("-fx-background-color: red;");
+        engine4.setStyle("-fx-background-color: red;");
+        fuelpump.setStyle("-fx-background-color: red;");
+        apu.setStyle("-fx-background-color: red;");
+        lights.setStyle("-fx-background-color: red;");
+        com.setStyle("-fx-background-color: red;");
     }
 }

@@ -19,8 +19,8 @@ public class Navigation {
 
     private static Navigation instance = null;
 
-    private final int MIN_WIDTH = 600;
-    private final int MIN_HEIGHT = 300;
+//    private final int MIN_WIDTH = 600;
+//    private final int MIN_HEIGHT = 300;
     private boolean isCompany;
 
     public boolean getIsCompany() {
@@ -86,7 +86,7 @@ public class Navigation {
 
             root = fxmlLoader.load();
 
-            Scene scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
+            Scene scene = new Scene(root);
             scenes.push(scene);
 
             setScene(scene);

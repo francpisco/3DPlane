@@ -20,13 +20,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Bubble bubble = new Bubble();
-        Plane plane = new Plane();
-
-        Loop loop = new Loop(plane, bubble);
-        Thread planeLoop = new Thread(loop);
-        planeLoop.start();
-
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/springconfig.xml");
 
         Navigation navigation = applicationContext.getBean(Navigation.class);
