@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.springframework.stereotype.Controller;
 import pt.altran.roothless.Navigation;
 
 import java.net.URL;
@@ -14,6 +15,7 @@ import java.util.ResourceBundle;
  * Created by Altran on 30/05/2017.
  */
 
+@Controller
 public class LoginController implements Initializable {
 
     private String name = "plane";

@@ -8,12 +8,13 @@
     <bean id="plane" class="pt.altran.roothless.model.Plane"/>
     <bean id="bubble" class="pt.altran.roothless.model.Bubble"/>
     <bean id="logincontroller" class="pt.altran.roothless.Controller.LoginController"/>
+
     <bean id="planecontroller" class="pt.altran.roothless.Controller.PlaneController" autowire="constructor">
         <constructor-arg ref="plane"/>
         <constructor-arg ref="bubble"/>
 
-
     </bean>
+    
     <bean id="navigation" class="pt.altran.roothless.Navigation" scope="singleton">
         <property name="controllers">
             <map>

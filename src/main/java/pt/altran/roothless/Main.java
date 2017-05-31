@@ -32,7 +32,12 @@ public class Main extends Application {
         Navigation navigation = applicationContext.getBean(Navigation.class);
 
         navigation.setStage(primaryStage);
-        navigation.loadScreen("/first");
+        navigation.loadScreen("/first2");
+
+
+
+
+
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/first.fxml"));
 //
 //        Parent root = fxmlLoader.load();

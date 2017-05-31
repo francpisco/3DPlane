@@ -17,6 +17,7 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Sphere;
 import javafx.util.Duration;
+import org.springframework.stereotype.Controller;
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 import pt.altran.roothless.service.UpdateWindowView;
@@ -28,6 +29,7 @@ import java.util.ResourceBundle;
  * Created by Altran on 23/05/2017.
  */
 
+@Controller
 public class PlaneController implements Initializable {
 
     public ToggleButton parkingbrakes;
@@ -102,6 +104,9 @@ public class PlaneController implements Initializable {
     private URL location;
 
     private boolean isreadytofly;
+
+    public PlaneController() {
+    }
 
     public PlaneController(Bubble bubble, Plane plane) {
         this.bubble = bubble;
