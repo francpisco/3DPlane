@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import pt.altran.roothless.Navigation;
 
@@ -20,12 +21,18 @@ public class LoginController implements Initializable {
 
     private String name = "plane";
     private String pass = "pass";
+    private Navigation navigation;
 
     public TextField userField;
     public TextField passwordField;
     public Button loginButton;
 
+    public LoginController() {
+    }
 
+    public LoginController(Navigation navigation) {
+        this.navigation = navigation;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -33,6 +40,6 @@ public class LoginController implements Initializable {
     }
 
     public void login(ActionEvent actionEvent) {
-        Navigation.getInstance().loadScreen("/first2");
+        navigation.loadScreen("/first2");
     }
 }
