@@ -6,6 +6,7 @@ package pt.altran.roothless.model;
 
 public class User {
 
+    private Integer id;
     private String Name;
     private String email;
     private String pass;
