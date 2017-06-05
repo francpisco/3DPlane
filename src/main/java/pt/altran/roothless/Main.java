@@ -11,6 +11,8 @@ import pt.altran.roothless.Controller.PlaneController;
 import pt.altran.roothless.model.*;
 import pt.altran.roothless.service.Loop;
 
+import java.util.Date;
+
 
 public class Main extends Application {
 
@@ -19,9 +21,14 @@ public class Main extends Application {
 
         Database database = new Database();
         database.createDatabase("plane");
+
         database.creatUserType();
 
-        User renato = new User("renato", "renato343@gmail.com","1234",new Game(""))
+        Game game = new Game(new Date(), 100);
+        User renato = new User("renato", "renato343@gmail.com","1234", game);
+
+        database.createTables();
+        database.populateTable(renato);
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/springconfig.xml");
 

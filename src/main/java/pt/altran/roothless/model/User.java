@@ -51,4 +51,8 @@ public class User {
     public void setGame(Game game) {
         this.game = game;
     }
+
+    public Integer getId() {
+        return id;
+    }
 }

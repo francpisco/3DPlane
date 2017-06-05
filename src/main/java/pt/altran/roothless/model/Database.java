@@ -23,7 +23,7 @@ public class Database {
        session.close();
    }
 
-   public  void createTables(User user, Game game){
+   public  void createTables(){
 
        cluster = Cluster.builder().addContactPoint("localhost").build();
        session = cluster.connect("plane");
@@ -35,6 +35,24 @@ public class Database {
                "\tgame list<FROZEN<game>>,\n" +
                "\tPRIMARY KEY (id)\n" +
                ");";
+       session.execute(query);
+       session.close();
+
+   }
+
+   public void  populateTable(User user){
+
+       cluster = Cluster.builder().addContactPoint("localhost").build();
+       session = cluster.connect("plane");
+       query = "INSERT INTO users (id, name, email, pass, game)" +
+               " values ( " +
+               user.getId() + "," +
+               user.getName() + "," +
+               user.getEmail() + "," +
+               user.getPass() + "," +
+               "[date: " + user.getGame().getDate()+ "," +
+               "highscore: " + user.getGame().getHighScore() + "])";
+
        session.execute(query);
        session.close();
 
