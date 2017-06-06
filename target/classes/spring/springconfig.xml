@@ -21,7 +21,7 @@
     <bean id="logincontroller" class="pt.altran.roothless.Controller.LoginController" autowire="constructor">
         <constructor-arg ref ="navigation"/>
     </bean>
-    
+
     <bean id="planecontroller" class="pt.altran.roothless.Controller.PlaneController" autowire="constructor">
         <constructor-arg ref="plane"/>
         <constructor-arg ref="bubble"/>
