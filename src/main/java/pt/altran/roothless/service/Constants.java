@@ -10,5 +10,6 @@ public class Constants {
     public static final double CIRCLE_INITIAL_ALTITUDE = 10000.0;
     public static final double DRAG_COEFICIENT = 0.1;
     public static final double ROT_INERCIA = 0.3;
-    public static final double MAX_DIST_TO_WIN = 2000;
+    public static final double MAX_DIST_TO_WIN = 5;
+    public static final int INIT_FUEL = 2500;
 }

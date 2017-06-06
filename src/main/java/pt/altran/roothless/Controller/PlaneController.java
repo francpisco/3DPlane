@@ -124,7 +124,7 @@ public class PlaneController implements Initializable {
     }
 
     public void move() {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), event -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), event -> {
 
             UpdateWindowView.updateView(plane, groundRectangle, targetCircle, bubble);
             altitudeLcd.setValue(plane.getzPosition());
@@ -134,7 +134,7 @@ public class PlaneController implements Initializable {
             pitchLcd.setValue(plane.getPitch() * 180 / Math.PI);
             speedLc.setValue(plane.getSpeed());
             rollLcd.setValue(plane.getRoll() * 180 / Math.PI);
-            score.setText(Double.toString(plane.getSpeed()));
+            score.setText(Integer.toString(loop.getScore()));
 
         }));
         timeline.setCycleCount(Animation.INDEFINITE);

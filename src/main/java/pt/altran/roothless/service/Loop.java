@@ -13,6 +13,7 @@ public class Loop implements Runnable {
     private Bubble bubble;
 
     private int score;
+    private int fuel;
 
     private double deltaX;
     private double deltaY;
@@ -37,14 +38,19 @@ public class Loop implements Runnable {
     @Override
     public void run() {
 
-        while (true) {
+        fuel = Constants.INIT_FUEL;
+
+        while (fuel > 0) {
 
             plane.update(0.020);
             updateValues();
+            fuel--;
+            System.out.println(fuel);
 
             if (bubble.getyPosition() - plane.getyPosition() < 0) {
                 if (distanceToCenter < Constants.MAX_DIST_TO_WIN) {
                     score++;
+                    fuel = Constants.INIT_FUEL;
                 }
                 bubble.setyPosition(plane.getyPosition() + Constants.CIRCLE_INITIAL_DIST);
             }
