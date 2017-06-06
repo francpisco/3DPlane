@@ -21,15 +21,7 @@ public class Main extends Application {
 
         Database database = new Database();
         database.createDatabase("plane");
-
-        database.creatUserType();
-
-        Game game = new Game(new Date(), 100);
-        User renato = new User("renato", "renato343@gmail.com","1234", game);
-        renato.setId(1);
-
         database.createTables();
-        database.populateTable(renato);
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/springconfig.xml");
 

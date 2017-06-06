@@ -2,6 +2,7 @@ package pt.altran.roothless.model;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
+import org.apache.tools.ant.types.Mapper;
 
 
 /**
@@ -28,25 +29,25 @@ public class Database {
        cluster = Cluster.builder().addContactPoint("localhost").build();
        session = cluster.connect("plane");
        query = "CREATE TABLE IF NOT EXISTS users(\n" +
-               "\tid int,\n" +
+               "\tnick varchar,\n" +
                "\tname varchar,\n" +
                "\temail varchar,\n" +
                "\tpass varchar,\n" +
                "\thighscore int,\n" +
-               "\tPRIMARY KEY (id)\n" +
+               "\tPRIMARY KEY (nick)\n" +
                ");";
        session.execute(query);
        session.close();
 
    }
 
-   public void  populateTable(User user){
+   public void register(User user){
 
        cluster = Cluster.builder().addContactPoint("localhost").build();
        session = cluster.connect("plane");
-       query = "INSERT INTO users (id, name, email, pass)" +
-               " values (" +
-               user.getId() + ", '" +
+       query = "INSERT INTO users (nick, name, email, pass)" +
+               " values ('" +
+               user.getNick() + "', '" +
                user.getName() + "' , '" +
                user.getEmail() + "', '" +
                user.getPass() + "')";
@@ -56,13 +57,14 @@ public class Database {
 
    }
 
-   public void creatUserType (){
-
-       session = cluster.connect("plane");
-       query = "CREATE TYPE game (date date, highscore int)";
-       session.execute(query);
-
-   }
+//   public boolean exists (User user){
+//
+//       cluster = Cluster.builder().addContactPoint("localhost").build();
+//       session = cluster.connect("plane");
+//       query = "SELECT nick FROM users WHERE nick = '" + user.getNick() + "';" ;
+//
+//
+//   }
 
 
 }

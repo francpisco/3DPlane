@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import eu.hansolo.medusa.Gauge?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
@@ -12,9 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<?import eu.hansolo.medusa.Gauge?>
-
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
     <columnConstraints>
       <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="NEVER" minWidth="128.0" prefWidth="0.0" />
       <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="NEVER" minWidth="128.0" prefWidth="0.0" />
@@ -128,18 +127,26 @@
          </font>
       </ToggleButton>
 
-       <Gauge fx:id="altitudeLcd" title="ALTITUDE" animated="true" skinType="LCD" GridPane.rowSpan="2" GridPane.columnSpan="2" GridPane.columnIndex="1" GridPane.rowIndex="9" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
+       <Gauge fx:id="altitudeLcd" animated="true" maxHeight="90.0" maxWidth="100.0" skinType="LCD" title="ALTITUDE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
 
-       <Gauge fx:id="northLcd" title="NORTH" animated="true" skinType="LCD" GridPane.columnIndex="4" GridPane.rowIndex="8" minHeight="90.0" minWidth="100.0" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
-       <Gauge fx:id="eastLcd" title="EAST" animated="true" skinType="LCD" GridPane.columnIndex="6" GridPane.rowIndex="8" minHeight="90.0" minWidth="100.0" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
+       <Gauge fx:id="northLcd" animated="true" maxHeight="90.0" maxWidth="100.0" minHeight="90.0" minWidth="100.0" skinType="LCD" title="NORTH" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+       <Gauge fx:id="eastLcd" animated="true" maxHeight="90.0" maxWidth="100.0" minHeight="90.0" minWidth="100.0" skinType="LCD" title="EAST" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
 
-       <Gauge fx:id="compassLcd" title="COMPASS" animated="true" skinType="LCD" GridPane.columnIndex="4" GridPane.rowIndex="9" minHeight="90.0" minWidth="100.0" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
-       <Gauge fx:id="pitchLcd" title="PITCH" animated="true" skinType="LCD" GridPane.columnIndex="6" GridPane.rowIndex="9" minHeight="90.0" minWidth="100.0" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
+       <Gauge fx:id="compassLcd" animated="true" maxHeight="90.0" maxWidth="100.0" minHeight="90.0" minWidth="100.0" skinType="LCD" title="COMPASS" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+       <Gauge fx:id="pitchLcd" animated="true" maxHeight="90.0" maxWidth="100.0" minHeight="90.0" minWidth="100.0" skinType="LCD" title="PITCH" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
 
-       <Gauge fx:id="speedLc"    title="SPEED" animated="true" skinType="LCD" GridPane.columnIndex="6" GridPane.rowIndex="10" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER" />
-       <Gauge fx:id="rollLcd" title="ROLL" animated="true" skinType="LCD" GridPane.columnIndex="4" GridPane.rowIndex="10" maxHeight="90.0" maxWidth="100.0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
-
-
+       <Gauge fx:id="speedLc" animated="true" maxHeight="90.0" maxWidth="100.0" skinType="LCD" title="SPEED" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
+       <Gauge fx:id="rollLcd" animated="true" maxHeight="90.0" maxWidth="100.0" skinType="LCD" title="ROLL" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
+      <Label text="SCORE" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="1">
+         <font>
+            <Font size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="score" layoutX="906.0" layoutY="32.0" text="0" GridPane.columnIndex="9" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <font>
+            <Font size="39.0" />
+         </font>
+      </Label>
 
    </children>
 </GridPane>
