@@ -15,7 +15,6 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Sphere;
 import javafx.util.Duration;
 import org.springframework.stereotype.Controller;
 import pt.altran.roothless.Navigation;
@@ -120,11 +119,12 @@ public class PlaneController implements Initializable {
         this.bubble = bubble;
         this.plane = plane;
         this.navigation = navigation;
+
         //initialize();
     }
 
     public void move() {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), event -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), event -> {
 
             UpdateWindowView.updateView(plane, groundRectangle, targetCircle, bubble);
             altitudeLcd.setValue(plane.getzPosition());
@@ -134,7 +134,7 @@ public class PlaneController implements Initializable {
             pitchLcd.setValue(plane.getPitch() * 180 / Math.PI);
             speedLc.setValue(plane.getSpeed());
             rollLcd.setValue(plane.getRoll() * 180 / Math.PI);
-            score.setText(Double.toString(plane.getSpeed()));
+            score.setText(Integer.toString(loop.getScore()));
 
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -340,7 +340,7 @@ public class PlaneController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("init");
 
-        loop = new Loop(plane,bubble);
+        loop = new Loop(plane, bubble);
 
         Thread planeLoop = new Thread(loop);
         planeLoop.start();
