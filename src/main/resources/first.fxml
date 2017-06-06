@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefWidth="231.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.LoginController">
+<StackPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.LoginController">
     <children>
         <StackPane>
             <children>
@@ -19,9 +19,13 @@
                         <GridPane>
                             <children>
                                 <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                                <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <Label text="Password:" GridPane.rowIndex="1" />
                                 <TextField fx:id="userField" promptText="Use &quot;open&quot; to login" text="open" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                                 <TextField fx:id="passwordField" promptText="Use &quot;sesame&quot; to login" text="sesame" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label layoutX="10.0" layoutY="47.0" text="Email" GridPane.rowIndex="2" />
+                        <TextField fx:id="emailField" layoutX="119.0" layoutY="43.0" promptText="Use &quot;sesame&quot; to login" text="sesame" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label layoutX="10.0" layoutY="77.0" text="NickName" GridPane.rowIndex="3" />
+                        <TextField fx:id="nickField1" layoutX="119.0" layoutY="73.0" promptText="Use &quot;sesame&quot; to login" text="sesame" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                             </children>
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="109.0" />
@@ -29,14 +33,24 @@
                             </columnConstraints>
                             <rowConstraints>
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                         </GridPane>
-                        <StackPane prefHeight="-1.0" prefWidth="-1.0">
-                            <children>
-                                <Button fx:id="loginButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#login" text="Login" StackPane.alignment="CENTER_RIGHT" />
-                            </children>
-                        </StackPane>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                                <Button fx:id="loginButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#login" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#register" text="Register" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                     </children>
+                  </GridPane>
                     </children>
                 </VBox>
             </children>

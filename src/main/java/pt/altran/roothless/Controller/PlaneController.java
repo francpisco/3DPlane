@@ -35,6 +35,7 @@ import java.util.ResourceBundle;
 public class PlaneController implements Initializable {
 
 
+    public Label score;
     private Navigation navigation;
 
     Loop loop;
@@ -133,6 +134,7 @@ public class PlaneController implements Initializable {
             pitchLcd.setValue(plane.getPitch() * 180 / Math.PI);
             speedLc.setValue(plane.getSpeed());
             rollLcd.setValue(plane.getRoll() * 180 / Math.PI);
+            score.setText(Double.toString(plane.getSpeed()));
 
         }));
         timeline.setCycleCount(Animation.INDEFINITE);

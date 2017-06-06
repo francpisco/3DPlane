@@ -7,7 +7,10 @@ import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import pt.altran.roothless.Navigation;
+import pt.altran.roothless.model.Database;
+import pt.altran.roothless.model.User;
 
+import javax.xml.crypto.Data;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,9 +22,14 @@ import java.util.ResourceBundle;
 @Controller
 public class LoginController implements Initializable {
 
+    public Button registerButton;
+    public TextField emailField;
+    public TextField nickField1;
     private String name = "plane";
     private String pass = "pass";
+
     private Navigation navigation;
+    private Database database;
 
     public TextField userField;
     public TextField passwordField;
@@ -30,8 +38,9 @@ public class LoginController implements Initializable {
     public LoginController() {
     }
 
-    public LoginController(Navigation navigation) {
+    public LoginController(Navigation navigation, Database database) {
         this.navigation = navigation;
+        this.database = database;
     }
 
     @Override
@@ -41,5 +50,16 @@ public class LoginController implements Initializable {
 
     public void login(ActionEvent actionEvent) {
         navigation.loadScreen("/first2");
+    }
+
+    public void register(ActionEvent actionEvent) {
+
+        User user = new User();
+        user.setName(userField.getText());
+        user.setEmail(emailField.getText());
+        user.setPass(passwordField.getText());
+        user.setNick(nickField1.getText());
+        database.register(user);
+
     }
 }
