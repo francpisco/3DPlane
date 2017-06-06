@@ -27,12 +27,12 @@ public class Database {
 
        cluster = Cluster.builder().addContactPoint("localhost").build();
        session = cluster.connect("plane");
-       query = "CREATE TABLE users(\n" +
+       query = "CREATE TABLE IF NOT EXISTS users(\n" +
                "\tid int,\n" +
                "\tname varchar,\n" +
                "\temail varchar,\n" +
                "\tpass varchar,\n" +
-               "\tgame list<FROZEN<game>>,\n" +
+               "\thighscore int,\n" +
                "\tPRIMARY KEY (id)\n" +
                ");";
        session.execute(query);
@@ -44,14 +44,12 @@ public class Database {
 
        cluster = Cluster.builder().addContactPoint("localhost").build();
        session = cluster.connect("plane");
-       query = "INSERT INTO users (id, name, email, pass, game)" +
-               " values ( " +
-               user.getId() + "," +
-               user.getName() + "," +
-               user.getEmail() + "," +
-               user.getPass() + "," +
-               "[date: " + user.getGame().getDate()+ "," +
-               "highscore: " + user.getGame().getHighScore() + "])";
+       query = "INSERT INTO users (id, name, email, pass)" +
+               " values (" +
+               user.getId() + ", '" +
+               user.getName() + "' , '" +
+               user.getEmail() + "', '" +
+               user.getPass() + "')";
 
        session.execute(query);
        session.close();

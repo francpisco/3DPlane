@@ -7,25 +7,28 @@ package pt.altran.roothless.model;
 public class User {
 
     private Integer id;
-    private String Name;
+    private String name;
     private String email;
     private String pass;
     private Game game;
 
     public User(String name, String email, String pass, Game game) {
-        Name = name;
+        this.name = name;
         this.email = email;
         this.pass = pass;
         this.game = game;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getEmail() {
