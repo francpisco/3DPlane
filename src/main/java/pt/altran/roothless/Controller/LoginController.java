@@ -3,14 +3,13 @@ package pt.altran.roothless.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import pt.altran.roothless.Navigation;
 import pt.altran.roothless.model.Database;
 import pt.altran.roothless.model.User;
 
-import javax.xml.crypto.Data;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,6 +24,7 @@ public class LoginController implements Initializable {
     public Button registerButton;
     public TextField emailField;
     public TextField nickField1;
+    public Label message;
     private String name = "plane";
     private String pass = "pass";
 
@@ -59,7 +59,11 @@ public class LoginController implements Initializable {
         user.setEmail(emailField.getText());
         user.setPass(passwordField.getText());
         user.setNick(nickField1.getText());
-        database.register(user);
-
+        if (!database.exists(user)) {
+            database.register(user);
+        }else {
+            message.setText("USER ALREADY EXISTS");
+            message.setVisible(true);
+        }
     }
 }

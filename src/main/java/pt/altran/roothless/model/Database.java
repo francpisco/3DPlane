@@ -1,6 +1,8 @@
 package pt.altran.roothless.model;
 
 import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 import org.apache.tools.ant.types.Mapper;
 
@@ -13,6 +15,7 @@ public class Database {
    Cluster cluster;
    Session session;
    String query;
+   User user;
 
    public void createDatabase(String name){
 
@@ -57,14 +60,19 @@ public class Database {
 
    }
 
-//   public boolean exists (User user){
-//
-//       cluster = Cluster.builder().addContactPoint("localhost").build();
-//       session = cluster.connect("plane");
-//       query = "SELECT nick FROM users WHERE nick = '" + user.getNick() + "';" ;
-//
-//
-//   }
+   public boolean exists (User user){
+
+       cluster = Cluster.builder().addContactPoint("localhost").build();
+       session = cluster.connect("plane");
+       query = "SELECT nick FROM users WHERE nick = '" + user.getNick() + "';" ;
+       ResultSet rs = session.execute(query);
+       Row row = rs.one();
+       if(row == null){
+           return false;
+       }else {
+           return true;
+       }
+   }
 
 
 }
