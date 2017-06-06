@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import pt.altran.roothless.Navigation;
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
+import pt.altran.roothless.model.RelativePosition;
 import pt.altran.roothless.service.Loop;
 import pt.altran.roothless.service.UpdateWindowView;
 
@@ -76,6 +77,8 @@ public class PlaneController implements Initializable {
 
     private Bubble bubble;
     private Plane plane = new Plane();
+    private RelativePosition relativePosition;
+    private UpdateWindowView updateWindowView;
 
     @FXML
     private Ellipse targetElipse;
@@ -114,11 +117,14 @@ public class PlaneController implements Initializable {
 
     }
 
-    public PlaneController(Bubble bubble, Plane plane, Navigation navigation) {
+    public PlaneController(Bubble bubble, Plane plane, Navigation navigation
+            , RelativePosition relativePosition, UpdateWindowView updateWindowView) {
 
         this.bubble = bubble;
         this.plane = plane;
         this.navigation = navigation;
+        this.relativePosition = relativePosition;
+        this.updateWindowView = updateWindowView;
 
         //initialize();
     }
@@ -126,7 +132,8 @@ public class PlaneController implements Initializable {
     public void move() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), event -> {
 
-            UpdateWindowView.updateView(plane, groundRectangle, targetCircle, bubble);
+            // TODO: 06/06/2017 criar propriedades com o spring para os metodos deixarem de ser estaticos
+            updateWindowView.updateView(plane, groundRectangle, targetCircle, bubble);
             altitudeLcd.setValue(plane.getzPosition());
             northLcd.setValue(plane.getyPosition());
             eastLcd.setValue(plane.getxPosition());
@@ -340,7 +347,7 @@ public class PlaneController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("init");
 
-        loop = new Loop(plane, bubble);
+        loop = new Loop(plane, bubble, relativePosition);
 
         Thread planeLoop = new Thread(loop);
         planeLoop.start();

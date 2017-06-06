@@ -4,32 +4,24 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
+import pt.altran.roothless.model.RelativePosition;
 
 /**
  * Created by Altran on 25/05/2017.
  */
 public class UpdateWindowView {
 
-    public static void updateView(Plane plane, Rectangle rectangle, Circle circle, Bubble bubble) {
+    private RelativePosition relativePosition;
 
-        double deltaX = plane.getxPosition() - bubble.getxPosition();
-        double deltaY = plane.getyPosition() - bubble.getyPosition();
-        double deltaZ = plane.getzPosition() - bubble.getzPosition();
+    public UpdateWindowView(RelativePosition relativePosition) {
+        this.relativePosition = relativePosition;
+    }
 
-        double angleH = Math.atan(deltaX/deltaY);
-        double deltaHAngle = plane.getYaw() - angleH;
-        double distanceH = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
+    public void updateView(Plane plane, Rectangle rectangle, Circle circle, Bubble bubble) {
 
-        double angleV = Math.atan(deltaZ/deltaY);
-        double deltaVAngle = plane.getPitch() - angleV;
-        double distanceV = Math.sqrt(deltaZ*deltaZ + deltaY*deltaY);
-
-
-        double distanceToCenter = Math.sqrt(deltaX*deltaX + deltaZ*deltaZ);
-        double distanceToPlane = Math.sqrt(deltaY*deltaY + distanceToCenter*distanceToCenter);
-
-        resize(distanceToPlane, distanceToCenter, circle);
-        recenter2(distanceH, deltaHAngle, distanceV, deltaVAngle, circle);
+        resize(relativePosition.getDistanceToPlane(), relativePosition.getDistanceToCenter(), circle);
+        recenter2(relativePosition.getDistanceH(), relativePosition.getDeltaHAngle(), relativePosition.getDistanceV()
+                , relativePosition.getDeltaVAngle(), circle);
 
         updatePitch(plane, rectangle);
 

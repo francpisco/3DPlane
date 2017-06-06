@@ -9,8 +9,8 @@ import pt.altran.roothless.service.Constants;
 public class Bubble {
 
     private double xPosition;
-    private double yPosition = Constants.CIRCLE_INITIAL_DIST;
-    private double zPosition = Constants.CIRCLE_INITIAL_ALTITUDE;
+    private double yPosition = Constants.BUBBLE_INITIAL_DIST;
+    private double zPosition = Constants.BUBBLE_INITIAL_ALTITUDE;
 
     public double getxPosition() {
         return xPosition;
