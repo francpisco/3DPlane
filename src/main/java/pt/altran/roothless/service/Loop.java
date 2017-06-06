@@ -3,6 +3,7 @@ package pt.altran.roothless.service;
 
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
+import pt.altran.roothless.model.RelativePosition;
 
 /**
  * Created by Altran on 23/05/2017.
@@ -11,48 +12,38 @@ public class Loop implements Runnable {
 
     private Plane plane;
     private Bubble bubble;
+    private RelativePosition relativePosition;
 
     private int score;
-    private int fuel;
 
-    private double deltaX;
-    private double deltaY;
-    private double deltaZ;
 
-    private double angleH;
-    private double deltaHAngle;
-    private double distanceH;
 
-    private double angleV;
-    private double deltaVAngle;
-    private double distanceV;
-
-    private double distanceToCenter;
-    private double distanceToPlane;
-
-    public Loop(Plane plane, Bubble bubble) {
+    public Loop(Plane plane, Bubble bubble, RelativePosition relativePosition) {
         this.plane = plane;
         this.bubble = bubble;
+        this.relativePosition = relativePosition;
     }
 
     @Override
     public void run() {
 
-        fuel = Constants.INIT_FUEL;
+        plane.setFuel(Constants.INIT_FUEL);
 
-        while (fuel > 0) {
+        while (plane.getFuel() > 0) {
 
             plane.update(0.020);
-            updateValues();
-            fuel--;
-            System.out.println(fuel);
+            relativePosition.updateValues();
+            plane.setFuel(plane.getFuel() - 1);
+            System.out.println(plane.getFuel());
 
             if (bubble.getyPosition() - plane.getyPosition() < 0) {
-                if (distanceToCenter < Constants.MAX_DIST_TO_WIN) {
+                if (relativePosition.getDistanceToCenter() < Constants.MAX_DIST_TO_WIN) {
                     score++;
-                    fuel = Constants.INIT_FUEL;
+                    plane.setFuel(Constants.INIT_FUEL);
                 }
-                bubble.setyPosition(plane.getyPosition() + Constants.CIRCLE_INITIAL_DIST);
+                bubble.setyPosition(plane.getyPosition() + Constants.BUBBLE_INITIAL_DIST);
+                bubble.setxPosition(bubble.getxPosition() + (Math.random() - 0.5) * Constants.X_BUBBLE_RANDOM_FACTOR);
+                bubble.setzPosition(bubble.getzPosition() + (Math.random() - 0.5) * Constants.Z_BUBBLE_RANDOM_FACTOR);
             }
 
             try {
@@ -64,23 +55,6 @@ public class Loop implements Runnable {
     }
 
 
-    public void updateValues() {
-        deltaX = plane.getxPosition() - bubble.getxPosition();
-        deltaY = plane.getyPosition() - bubble.getyPosition();
-        deltaZ = plane.getzPosition() - bubble.getzPosition();
-
-        angleH = Math.atan(deltaX/deltaY);
-        deltaHAngle = plane.getYaw() - angleH;
-        distanceH = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
-
-        angleV = Math.atan(deltaZ/deltaY);
-        deltaVAngle = plane.getPitch() - angleV;
-        distanceV = Math.sqrt(deltaZ*deltaZ + deltaY*deltaY);
-
-        distanceToCenter = Math.sqrt(deltaX*deltaX + deltaZ*deltaZ);
-        distanceToPlane = Math.sqrt(deltaY*deltaY + distanceToCenter*distanceToCenter);
-    }
-
     public void setPlane(Plane plane) {
         this.plane = plane;
     }
@@ -88,4 +62,5 @@ public class Loop implements Runnable {
     public int getScore() {
         return score;
     }
+
 }

@@ -9,14 +9,22 @@
         <constructor-arg ref="database"/>
     </bean>
 
-
     <bean id="plane" class="pt.altran.roothless.model.Plane"/>
     <bean id="bubble" class="pt.altran.roothless.model.Bubble"/>
-    <bean id="loop" class="pt.altran.roothless.service.Loop">
+    <bean id="relativePosition" class="pt.altran.roothless.model.RelativePosition">
         <constructor-arg ref="plane"/>
         <constructor-arg ref="bubble"/>
     </bean>
 
+    <bean id="updateWindowView" class="pt.altran.roothless.service.UpdateWindowView">
+        <constructor-arg ref="relativePosition"/>
+    </bean>
+
+    <bean id="loop" class="pt.altran.roothless.service.Loop">
+        <constructor-arg ref="plane"/>
+        <constructor-arg ref="bubble"/>
+        <constructor-arg ref="relativePosition"/>
+    </bean>
 
     <bean id="navigation" class="pt.altran.roothless.Navigation" scope="singleton">
         <property name="controllers">
@@ -37,6 +45,8 @@
         <constructor-arg ref="plane"/>
         <constructor-arg ref="bubble"/>
         <constructor-arg ref="navigation"/>
+        <constructor-arg ref="relativePosition"/>
+        <constructor-arg ref="updateWindowView"/>
     </bean>
     
 

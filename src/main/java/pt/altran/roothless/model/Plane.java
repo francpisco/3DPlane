@@ -42,6 +42,8 @@ public class Plane {
     private double distance;
     private double horizontalDistance;
 
+    private int fuel;
+
 
 
     public void update(double time) {
@@ -268,5 +270,13 @@ public class Plane {
 
     public void setYawAcceleration(double yawAcceleration) {
         this.yawAcceleration = yawAcceleration;
+    }
+
+    public int getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(int fuel) {
+        this.fuel = fuel;
     }
 }
