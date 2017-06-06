@@ -12,6 +12,7 @@
         <constructor-arg ref="bubble"/>
     </bean>
 
+
     <bean id="navigation" class="pt.altran.roothless.Navigation" scope="singleton">
         <property name="controllers">
             <map>
@@ -30,7 +31,6 @@
         <constructor-arg ref="plane"/>
         <constructor-arg ref="bubble"/>
         <constructor-arg ref="navigation"/>
-
     </bean>
     
 

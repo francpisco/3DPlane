@@ -15,7 +15,6 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Sphere;
 import javafx.util.Duration;
 import org.springframework.stereotype.Controller;
 import pt.altran.roothless.Navigation;
@@ -119,6 +118,7 @@ public class PlaneController implements Initializable {
         this.bubble = bubble;
         this.plane = plane;
         this.navigation = navigation;
+
         //initialize();
     }
 
@@ -338,7 +338,7 @@ public class PlaneController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("init");
 
-        loop = new Loop(plane,bubble);
+        loop = new Loop(plane, bubble);
 
         Thread planeLoop = new Thread(loop);
         planeLoop.start();
