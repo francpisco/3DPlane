@@ -4,10 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+    <bean id="database" class="pt.altran.roothless.model.Database"/>
+    <bean id="userService" class="pt.altran.roothless.service.UserService">
+        <constructor-arg ref="database"/>
+    </bean>
+
 
     <bean id="plane" class="pt.altran.roothless.model.Plane"/>
     <bean id="bubble" class="pt.altran.roothless.model.Bubble"/>
-    <bean id="database" class="pt.altran.roothless.model.Database"/>
     <bean id="loop" class="pt.altran.roothless.service.Loop">
         <constructor-arg ref="plane"/>
         <constructor-arg ref="bubble"/>
@@ -26,7 +30,7 @@
 
     <bean id="logincontroller" class="pt.altran.roothless.Controller.LoginController" autowire="constructor">
         <constructor-arg ref ="navigation"/>
-        <constructor-arg ref="database"/>
+        <constructor-arg ref="userService"/>
     </bean>
 
     <bean id="planecontroller" class="pt.altran.roothless.Controller.PlaneController" autowire="constructor">

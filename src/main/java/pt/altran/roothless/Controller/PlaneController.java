@@ -35,6 +35,7 @@ public class PlaneController implements Initializable {
 
 
     public Label score;
+    public Gauge fuelGauge;
     private Navigation navigation;
 
     Loop loop;
@@ -384,5 +385,6 @@ public class PlaneController implements Initializable {
         apu.setStyle("-fx-background-color: red;");
         lights.setStyle("-fx-background-color: red;");
         com.setStyle("-fx-background-color: red;");
+
     }
 }

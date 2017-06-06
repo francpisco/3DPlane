@@ -74,6 +74,11 @@ public class Database {
        }
    }
 
+   public boolean authenticate (User user){
+
+       return false;
+   }
+
 
 }
 

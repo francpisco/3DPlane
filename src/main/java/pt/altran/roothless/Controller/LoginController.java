@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import pt.altran.roothless.Navigation;
 import pt.altran.roothless.model.Database;
 import pt.altran.roothless.model.User;
+import pt.altran.roothless.service.UserService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,11 +26,9 @@ public class LoginController implements Initializable {
     public TextField emailField;
     public TextField nickField1;
     public Label message;
-    private String name = "plane";
-    private String pass = "pass";
 
     private Navigation navigation;
-    private Database database;
+    private UserService userService;
 
     public TextField userField;
     public TextField passwordField;
@@ -38,9 +37,9 @@ public class LoginController implements Initializable {
     public LoginController() {
     }
 
-    public LoginController(Navigation navigation, Database database) {
+    public LoginController(Navigation navigation, UserService userService) {
         this.navigation = navigation;
-        this.database = database;
+        this.userService = userService;
     }
 
     @Override
@@ -49,6 +48,7 @@ public class LoginController implements Initializable {
     }
 
     public void login(ActionEvent actionEvent) {
+
         navigation.loadScreen("/first2");
     }
 
@@ -59,8 +59,10 @@ public class LoginController implements Initializable {
         user.setEmail(emailField.getText());
         user.setPass(passwordField.getText());
         user.setNick(nickField1.getText());
-        if (!database.exists(user)) {
-            database.register(user);
+
+        if (userService.register(user)) {
+            message.setText("Registration sucessul");
+            message.setVisible(true);
         }else {
             message.setText("USER ALREADY EXISTS");
             message.setVisible(true);

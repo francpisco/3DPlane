@@ -44,7 +44,7 @@
   </rowConstraints>
    <children>
       <Rectangle fx:id="skyrectangle" arcHeight="5.0" arcWidth="5.0" fill="#1fffbf" height="800.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" GridPane.columnSpan="12" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.rowSpan="10" GridPane.vgrow="NEVER" />
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" visible="true" GridPane.columnSpan="13" GridPane.rowSpan="11">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0"  GridPane.columnSpan="13" GridPane.rowSpan="11">
          <children>
             <Rectangle fx:id="groundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#69ff6e" height="1694.0" layoutX="-893.0" layoutY="211.0" stroke="BLACK" strokeType="INSIDE" width="2982.0" />
             <Circle fx:id="targetCircle" fill="DODGERBLUE" layoutX="600.0" layoutY="200.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
@@ -137,6 +137,7 @@
 
        <Gauge fx:id="speedLc" animated="true" maxHeight="90.0" maxWidth="100.0" skinType="LCD" title="SPEED" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
        <Gauge fx:id="rollLcd" animated="true" maxHeight="90.0" maxWidth="100.0" skinType="LCD" title="ROLL" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
+       <Gauge fx:id="fuelGauge" animated="true" skinType="MODERN" title="FUEL" GridPane.columnIndex="1" GridPane.rowIndex="8" GridPane.columnSpan="2" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
       <Label text="SCORE" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="1">
          <font>
             <Font size="39.0" />
