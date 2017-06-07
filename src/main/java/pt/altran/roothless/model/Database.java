@@ -67,11 +67,14 @@ public class Database {
        query = "SELECT nick FROM users WHERE nick = '" + user.getNick() + "';" ;
        ResultSet rs = session.execute(query);
        Row row = rs.one();
+       session.close();
+
        if(row == null){
            return false;
        }else {
            return true;
        }
+
    }
 
    public boolean authenticate (User user){
