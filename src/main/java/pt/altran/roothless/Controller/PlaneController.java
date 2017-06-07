@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
@@ -21,6 +22,7 @@ import pt.altran.roothless.Navigation;
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 import pt.altran.roothless.model.RelativePosition;
+import pt.altran.roothless.service.Constants;
 import pt.altran.roothless.service.Loop;
 import pt.altran.roothless.service.UpdateWindowView;
 
@@ -38,8 +40,8 @@ public class PlaneController implements Initializable {
     public Label score;
     public Gauge fuelGauge;
     private Navigation navigation;
+    private Loop loop;
 
-    Loop loop;
     public ToggleButton parkingbrakes;
     public ToggleButton power;
     public ToggleButton engine2;
@@ -63,6 +65,10 @@ public class PlaneController implements Initializable {
     public Gauge speedLc;
     public Gauge rollLcd;
 
+    public ImageView leftArrow;
+    public ImageView rightArrow;
+    public ImageView upArrow;
+    public ImageView downArrow;
 
     private boolean parkingbrakesbol = false;
     private boolean powerbol = false;
@@ -142,7 +148,24 @@ public class PlaneController implements Initializable {
             speedLc.setValue(plane.getSpeed());
             rollLcd.setValue(plane.getRoll() * 180 / Math.PI);
             score.setText(Integer.toString(loop.getScore()));
-            fuelGauge.setValue(plane.getFuel()/25);
+            fuelGauge.setValue(plane.getFuel() * 100 / Constants.INIT_FUEL);
+
+            if (relativePosition.getDeltaHAngle() < 0) {
+                rightArrow.setVisible(false);
+                leftArrow.setVisible(true);
+            }
+            if (relativePosition.getDeltaHAngle() > 0) {
+                leftArrow.setVisible(false);
+                rightArrow.setVisible(true);
+            }
+            if (relativePosition.getDeltaVAngle() > 0) {
+                upArrow.setVisible(false);
+                downArrow.setVisible(true);
+            }
+            if (relativePosition.getDeltaVAngle() < 0) {
+                downArrow.setVisible(false);
+                upArrow.setVisible(true);
+            }
 
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -375,7 +398,7 @@ public class PlaneController implements Initializable {
 
         flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                plane.moveFlaps((double) newValue/1000);
+                plane.moveFlaps((double) newValue/500);
 
             }
         });
@@ -392,6 +415,11 @@ public class PlaneController implements Initializable {
         apu.setStyle("-fx-background-color: red;");
         lights.setStyle("-fx-background-color: red;");
         com.setStyle("-fx-background-color: red;");
+
+        leftArrow.setVisible(false);
+        rightArrow.setVisible(false);
+        upArrow.setVisible(false);
+        downArrow.setVisible(false);
 
     }
 }
