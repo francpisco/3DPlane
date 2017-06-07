@@ -48,7 +48,7 @@
       <Rectangle fx:id="skyrectangle" arcHeight="5.0" arcWidth="5.0" fill="#1fffbf" height="800.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" GridPane.columnSpan="12" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.rowSpan="10" GridPane.vgrow="NEVER" />
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0"  GridPane.columnSpan="13" GridPane.rowSpan="11">
          <children>
-            <Rectangle fx:id="groundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#69ff6e" height="1694.0" layoutX="-893.0" layoutY="211.0" stroke="BLACK" strokeType="INSIDE" width="2982.0" />
+            <Rectangle fx:id="groundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#69ff6e" height="169.0" layoutX="-893.0" layoutY="211.0" stroke="BLACK" strokeType="INSIDE" width="298.0" />
             <Circle fx:id="targetCircle" fill="DODGERBLUE" layoutX="600.0" layoutY="200.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>

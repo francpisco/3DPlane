@@ -34,7 +34,6 @@ public class Loop implements Runnable {
             plane.update(0.020);
             relativePosition.updateValues();
             plane.setFuel(plane.getFuel() - 1);
-            System.out.println(plane.getFuel());
 
             if (bubble.getyPosition() - plane.getyPosition() < 0) {
                 if (relativePosition.getDistanceToCenter() < Constants.MAX_DIST_TO_WIN) {
