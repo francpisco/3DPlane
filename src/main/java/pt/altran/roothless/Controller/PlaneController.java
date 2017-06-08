@@ -12,7 +12,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
@@ -402,7 +404,6 @@ public class PlaneController implements Initializable {
 
             }
         });
-
 
         landingGearButton.setStyle("-fx-background-color: red;");
         parkingbrakes.setStyle("-fx-background-color: red;");

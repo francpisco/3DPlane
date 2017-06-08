@@ -31,6 +31,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.jfxtras</groupId>
+            <artifactId>jfxtras-all</artifactId>
+            <version>8.0-r5</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>4.3.8.RELEASE</version>
@@ -52,8 +58,6 @@
 
 
     </dependencies>
-
-
 
 
 </project>

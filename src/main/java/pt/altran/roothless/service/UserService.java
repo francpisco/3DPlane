@@ -21,7 +21,6 @@ public class UserService {
 
         boolean authenticate = false;
 
-
 //        if(database.authenticate())
         return authenticate;
 

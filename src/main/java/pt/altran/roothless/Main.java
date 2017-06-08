@@ -28,7 +28,7 @@ public class Main extends Application {
         Navigation navigation = applicationContext.getBean(Navigation.class);
 
         navigation.setStage(primaryStage);
-        navigation.loadScreen("/first");
+        navigation.loadScreen("/views/first");
 
     }
 
