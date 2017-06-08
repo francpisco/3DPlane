@@ -19,16 +19,16 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Database database = new Database();
-        database.createDatabase("plane");
-        database.createTables();
+//        Database database = new Database();
+//        database.createDatabase("plane");
+//        database.createTables();
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/springconfig.xml");
 
         Navigation navigation = applicationContext.getBean(Navigation.class);
 
         navigation.setStage(primaryStage);
-        navigation.loadScreen("/views/first");
+        navigation.loadScreen("/views/game");
 
     }
 

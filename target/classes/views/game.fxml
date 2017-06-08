@@ -48,13 +48,13 @@
     <children>
         <Rectangle fx:id="skyrectangle" arcHeight="5.0" arcWidth="5.0" fill="#1fffbf" height="800.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" GridPane.columnSpan="12" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.rowSpan="10" GridPane.vgrow="NEVER" />
 
-
         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" GridPane.columnSpan="13" GridPane.rowSpan="11">
             <children>
                 <Rectangle fx:id="groundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#69ff6e" height="1694.0" layoutX="-893.0" layoutY="211.0" stroke="BLACK" strokeType="INSIDE" width="2982.0" />
                 <Circle fx:id="targetCircle" fill="DODGERBLUE" layoutX="600.0" layoutY="200.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
             </children>
         </Pane>
+
         <ImageView fx:id="leftArrow" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="3">
             <image>
                 <Image url="@..images/left.png" />
@@ -80,33 +80,37 @@
         </ImageView>
 
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#797979" height="300.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" GridPane.columnIndex="0" GridPane.columnSpan="13" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.rowSpan="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+
         <Slider fx:id="turnSlider" blockIncrement="1.0" max="50.0" min="-50.0" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+
         <Slider fx:id="thrustSlider" orientation="VERTICAL" prefHeight="178.0" prefWidth="30.0" showTickLabels="true" showTickMarks="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.rowSpan="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+
+        <Slider fx:id="flapsSlider" majorTickUnit="4.0" max="50.0" min="-50.0" minorTickCount="1" orientation="VERTICAL" prefHeight="178.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.rowSpan="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+
         <Label fx:id="turnValueLabel" text="0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <GridPane.margin>
                 <Insets left="50.0" />
             </GridPane.margin>
         </Label>
+
         <Label fx:id="thrustLabel" text="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <GridPane.margin>
                 <Insets left="50.0" />
             </GridPane.margin>
         </Label>
-        <Slider fx:id="flapsSlider" majorTickUnit="4.0" max="50.0" min="-50.0" minorTickCount="1" orientation="VERTICAL" prefHeight="178.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.rowSpan="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
-            <GridPane.margin>
-                <Insets />
-            </GridPane.margin>
-        </Slider>
+
         <Label fx:id="flapsLabel" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <GridPane.margin>
                 <Insets bottom="70.0" />
             </GridPane.margin>
         </Label>
+
         <ToggleButton fx:id="landingGearButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="90.0" minWidth="100.0" mnemonicParsing="false" onAction="#landingGear" prefHeight="90.0" prefWidth="90.0" text="Landing Gear" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <font>
                 <Font size="19.0" />
             </font>
         </ToggleButton>
+
         <ToggleButton fx:id="parkingbrakes" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="90.0" minWidth="100.0" mnemonicParsing="false" onAction="#parkingbrakes" prefHeight="90.0" prefWidth="90.0" text="Parking Brakes" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <font>
                 <Font size="19.0" />
@@ -117,16 +121,19 @@
                 <Font size="19.0" />
             </font>
         </ToggleButton>
+
         <ToggleButton fx:id="engine2" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="90.0" minWidth="100.0" mnemonicParsing="false" onAction="#engine2" prefHeight="90.0" prefWidth="90.0" text="Engine 2" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <font>
                 <Font size="19.0" />
             </font>
         </ToggleButton>
+
         <ToggleButton fx:id="engine1" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="90.0" minWidth="100.0" mnemonicParsing="false" onAction="#engine1" prefHeight="90.0" prefWidth="90.0" text="Engine 1" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <font>
                 <Font size="19.0" />
             </font>
         </ToggleButton>
+
         <ToggleButton fx:id="engine3" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="90.0" minWidth="100.0" mnemonicParsing="false" onAction="#engine3" prefHeight="90.0" prefWidth="90.0" text="Engine 3" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <font>
                 <Font size="19.0" />
@@ -137,21 +144,25 @@
                 <Font size="19.0" />
             </font>
         </ToggleButton>
+
         <ToggleButton fx:id="fuelpump" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="90.0" minWidth="100.0" mnemonicParsing="false" onAction="#fuelpump" prefHeight="90.0" prefWidth="90.0" text="FUEL PUMP" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <font>
                 <Font size="19.0" />
             </font>
         </ToggleButton>
+
         <ToggleButton fx:id="apu" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="90.0" minWidth="100.0" mnemonicParsing="false" onAction="#apu" prefHeight="90.0" prefWidth="90.0" text="A P U " textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="9" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <font>
                 <Font size="19.0" />
             </font>
         </ToggleButton>
+
         <ToggleButton fx:id="lights" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="90.0" minWidth="100.0" mnemonicParsing="false" onAction="#lights" prefHeight="90.0" prefWidth="90.0" text="LIGHTS" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="9" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <font>
                 <Font size="19.0" />
             </font>
         </ToggleButton>
+
         <ToggleButton fx:id="com" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="90.0" minWidth="100.0" mnemonicParsing="false" onAction="#com" prefHeight="90.0" prefWidth="90.0" text="COM" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="9" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <font>
                 <Font size="19.0" />

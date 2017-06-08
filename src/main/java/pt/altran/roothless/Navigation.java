@@ -1,11 +1,15 @@
 package pt.altran.roothless;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import pt.altran.roothless.model.Plane;
+
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -17,21 +21,9 @@ import java.util.Map;
 
 public class Navigation {
 
+    Plane plane = new Plane();
     private static Navigation instance = null;
 
-//    private final int MIN_WIDTH = 600;
-//    private final int MIN_HEIGHT = 300;
-    private boolean isCompany;
-
-    public boolean getIsCompany() {
-        return isCompany;
-    }
-
-    public void setIsCompany(boolean company) {
-        isCompany = company;
-    }
-
-    //org.renato.controller.Navigation History
     private LinkedList<Scene> scenes = new LinkedList<Scene>();
 
     public Map<String, Initializable> getControllers() {
@@ -87,10 +79,10 @@ public class Navigation {
             root = fxmlLoader.load();
 
             Scene scene = new Scene(root);
+
             scenes.push(scene);
 
             setScene(scene);
-
 
         } catch (IOException e) {
             e.printStackTrace();
