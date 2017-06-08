@@ -13,5 +13,5 @@ public class Constants {
     public static final double MAX_DIST_TO_WIN = 20;
     public static final int INIT_FUEL = 5000;
     public static final int X_BUBBLE_RANDOM_FACTOR = 30;
-    public static final double Z_BUBBLE_RANDOM_FACTOR = 10;
+    public static final double Z_BUBBLE_RANDOM_FACTOR = 30;
 }
