@@ -4,7 +4,6 @@ import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
-import org.apache.tools.ant.types.Mapper;
 
 
 /**
@@ -80,6 +79,16 @@ public class Database {
    public boolean authenticate (User user){
 
        return false;
+   }
+
+   public ResultSet getAll (){
+
+       cluster = Cluster.builder().addContactPoint("localhost").build();
+       session = cluster.connect();
+       query = "select * from plane.users";
+       ResultSet rs = session.execute(query);
+       session.close();
+       return rs;
    }
 
 

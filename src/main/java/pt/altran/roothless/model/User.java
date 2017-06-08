@@ -6,6 +6,7 @@ package pt.altran.roothless.model;
 
 public class User {
 
+    private int highscore;
     private String nick;
     private String name;
     private String email;
@@ -19,11 +20,24 @@ public class User {
         this.game = game;
     }
 
+    public User(String name, int highscore) {
+        this.name = name;
+        this.highscore = highscore;
+        }
+
+    public int getHighscore() {
+        return highscore;
+    }
+
+    public void setHighscore(int highscore) {
+        this.highscore = highscore;
+    }
+
     public User(){
 
     }
 
-    public void setNick(String nick) {
+    public void setnick(String nick) {
         this.nick = nick;
     }
 

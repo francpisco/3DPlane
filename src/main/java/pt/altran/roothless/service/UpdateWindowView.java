@@ -19,8 +19,8 @@ public class UpdateWindowView {
 
     public void updateView(Plane plane, Rectangle rectangle, Circle circle, Bubble bubble) {
 
-        resize(relativePosition.getDistanceToPlane(), relativePosition.getDistanceToCenter(), circle);
-        recenter2(relativePosition.getDistanceH(), relativePosition.getDeltaHAngle(), relativePosition.getDistanceV()
+        resize(relativePosition.getDistanceToPlane(), circle);
+        recenter(relativePosition.getDistanceH(), relativePosition.getDeltaHAngle(), relativePosition.getDistanceV()
                 , relativePosition.getDeltaVAngle(), circle);
 
         updatePitch(plane, rectangle);
@@ -30,21 +30,22 @@ public class UpdateWindowView {
         double yawInDeg = plane.getYaw() * 180 / Math.PI;
     }
 
-    private static void recenter2(double distanceH, double deltaHAngle, double distanceV, double deltaVAngle, Circle circle) {
+    private static void recenter(double distanceH, double deltaHAngle, double distanceV, double deltaVAngle, Circle circle) {
         circle.setCenterX(Math.sin(deltaHAngle) * 1280);
         circle.setCenterY(Math.sin(deltaVAngle) * 800);
     }
 
-    private static void recenter(double distanceX, double distanceZ, double distanceToPlane, Circle circle) {
-        circle.setCenterY(0.0 - (distanceZ*1000)/distanceToPlane);
-        circle.setCenterX(distanceX*1000/distanceToPlane);
-    }
 
-    private static void resize(double distanceToPlane, double distanceToCenter, Circle circle) {
-        circle.setRadius(2560.0/distanceToPlane);
+    private static void resize(double distanceToPlane, Circle circle) {
+        circle.setRadius(2560.0 / distanceToPlane);
     }
 
     private static void updateRoll(Plane plane, Rectangle rectangle) {
+        System.out.println("Rectangle X = " + rectangle.getX());
+        System.out.println("Plane roll = " + plane.getRoll());
+        System.out.println("Plane yaw = " + plane.getYaw());
+        System.out.println("Plane yaw vel = " + plane.getYawVelocity());
+        System.out.println("Plane yaw accel = " + plane.getYawAcceleration());
         rectangle.setRotate(plane.getRoll());
 
     }

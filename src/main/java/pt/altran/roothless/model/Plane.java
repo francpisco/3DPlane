@@ -25,6 +25,7 @@ public class Plane {
     private double rudder;
 
     private double roll;
+    private double rollAux;
     private double pitch;
     private double pitchAux;
     private double yaw;
@@ -48,14 +49,19 @@ public class Plane {
 
     public void update(double time) {
 
-        roll = Physics.angleCalc(roll, rollVelocity, rollAcceleration, time);
+        rollAux = Physics.angleCalc(roll, rollVelocity, rollAcceleration, time);
+        if (rollAux > -30.0 && rollAux < 30.0) {
+            roll = rollAux;
+            yawVelocity = Physics.yawVelCalc(yawVelocity, yawAcceleration, time);
+        }
+        yaw = Physics.yawCalc(yaw, yawVelocity, yawAcceleration, time);
 
         pitchVelocity = Physics.angularVelCalc(pitchVelocity, pitchAcceleration, time);
-        // TODO: 29/05/2017 limitar o pitch nao me parece a melhor ideia
+
         pitchAux = Physics.angleCalc(pitch, pitchVelocity, pitchAcceleration, time);
-        pitch = (pitchAux > -1.35 ? pitchAux : -1.35);
-        yawVelocity = Physics.yawVelCalc(yawVelocity, yawAcceleration, time);
-        yaw = Physics.yawCalc(yaw, yawVelocity, yawAcceleration, time);
+        if (pitchAux > -1.35 && pitchAux < 1.35) {
+            pitch = pitchAux;
+        }
 
         distance = Physics.distanceCalc(speed, acceleration, time);
         speed = Physics.VelocityCalc(acceleration, speed, time);
