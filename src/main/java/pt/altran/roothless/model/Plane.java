@@ -144,7 +144,7 @@ public class Plane {
 
     public void setxAcceleration(double xAcceleration) {
 
-        System.out.println("turning value is = " + xAcceleration);
+       // System.out.println("turning value is = " + xAcceleration);
         this.xAcceleration = xAcceleration;
     }
 

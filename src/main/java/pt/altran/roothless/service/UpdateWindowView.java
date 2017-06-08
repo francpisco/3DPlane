@@ -41,18 +41,18 @@ public class UpdateWindowView {
     }
 
     private static void updateRoll(Plane plane, Rectangle rectangle) {
-        System.out.println("Rectangle X = " + rectangle.getX());
-        System.out.println("Plane roll = " + plane.getRoll());
-        System.out.println("Plane yaw = " + plane.getYaw());
-        System.out.println("Plane yaw vel = " + plane.getYawVelocity());
-        System.out.println("Plane yaw accel = " + plane.getYawAcceleration());
+//        System.out.println("Rectangle X = " + rectangle.getX());
+//        System.out.println("Plane roll = " + plane.getRoll());
+//        System.out.println("Plane yaw = " + plane.getYaw());
+//        System.out.println("Plane yaw vel = " + plane.getYawVelocity());
+//        System.out.println("Plane yaw accel = " + plane.getYawAcceleration());
         rectangle.setRotate(plane.getRoll());
 
     }
 
     private static void updatePitch(Plane plane, Rectangle rectangle) {
-        System.out.println("Rectangle Y = " + rectangle.getY());
-        System.out.println("Plane pitch = " + plane.getPitch());
+//        System.out.println("Rectangle Y = " + rectangle.getY());
+//        System.out.println("Plane pitch = " + plane.getPitch());
         rectangle.setY((Math.tan(plane.getPitch()) * 214) + 71);
     }
 }

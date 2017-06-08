@@ -12,9 +12,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.ImagePattern;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
@@ -27,7 +27,6 @@ import pt.altran.roothless.model.RelativePosition;
 import pt.altran.roothless.service.Constants;
 import pt.altran.roothless.service.Loop;
 import pt.altran.roothless.service.UpdateWindowView;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -138,6 +137,31 @@ public class PlaneController implements Initializable {
         //initialize();
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+
+        loop = new Loop(plane, bubble, relativePosition);
+
+        Thread planeLoop = new Thread(loop);
+        planeLoop.start();
+
+        move();
+
+        setCockpitButtons();
+
+        moveRudderSlider();
+        moveThrusthSlider();
+        moveFlapsSlider();
+
+        leftArrow.setVisible(false);
+        rightArrow.setVisible(false);
+        upArrow.setVisible(false);
+        downArrow.setVisible(false);
+
+
+    }
+
     public void move() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), event -> {
 
@@ -224,7 +248,7 @@ public class PlaneController implements Initializable {
             apubol = false;
             fuelpump.setStyle("-fx-background-color: red;");
             fuelpumpbol = false;
-            parkingbrakesbol=false;
+            parkingbrakesbol = false;
             parkingbrakes.setStyle("-fx-background-color: red;");
             landingGearUp = false;
             landingGearButton.setStyle("-fx-background-color: red;");
@@ -274,7 +298,7 @@ public class PlaneController implements Initializable {
 
     public void engine3(ActionEvent actionEvent) {
 
-        if(powerbol && apubol && fuelpumpbol) {
+        if (powerbol && apubol && fuelpumpbol) {
             if (!engine3bol) {
                 engine3.setStyle("-fx-background-color: green;");
                 engine3bol = true;
@@ -287,7 +311,7 @@ public class PlaneController implements Initializable {
 
     public void engine4(ActionEvent actionEvent) {
 
-        if(powerbol && apubol && fuelpumpbol) {
+        if (powerbol && apubol && fuelpumpbol) {
             if (!engine4bol) {
                 engine4.setStyle("-fx-background-color: green;");
                 engine4bol = true;
@@ -369,27 +393,10 @@ public class PlaneController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("init");
-
-        loop = new Loop(plane, bubble, relativePosition);
-
-        Thread planeLoop = new Thread(loop);
-        planeLoop.start();
-
-        move();
-        turnSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                turnValueLabel.setText(String.format("%.0f", newValue));
-                plane.moveRudder((double) newValue/100);
-
-            }
-        });
+    public void moveThrusthSlider() {
 
         thrustSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-
                 thrustLabel.setText(String.format("%.0f", newValue));
                 isReadyToFly();
                 if (isreadytofly) {
@@ -398,12 +405,79 @@ public class PlaneController implements Initializable {
             }
         });
 
-        flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
+        thrustSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+
+            if (key.getCode() == KeyCode.A) {
+                System.out.println("enter A");
+                plane.moveThrottle(1);
+            }
+        });
+
+        thrustSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+            if (key.getCode() == KeyCode.Z) {
+                System.out.println("enter Z");
+                plane.moveThrottle(-1);
+            }
+        });
+
+    }
+
+
+    public void moveRudderSlider() {
+
+        turnSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+            if (key.getCode() == KeyCode.LEFT) {
+                System.out.println("enter LEFT");
+                plane.moveRudder(-1);
+            }
+        });
+
+        turnSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+            if (key.getCode() == KeyCode.RIGHT) {
+                System.out.println("enter RIGHT");
+                plane.moveRudder(1);
+            }
+        });
+
+        turnSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                plane.moveFlaps((double) newValue/500);
+                turnValueLabel.setText(String.format("%.0f", newValue));
+                plane.moveRudder((double) newValue / 100);
 
             }
         });
+
+
+    }
+
+    public void moveFlapsSlider() {
+
+
+        flapsSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+            if (key.getCode() == KeyCode.UP) {
+                System.out.println("enter UP");
+                plane.moveFlaps(-1);
+            }
+        });
+
+        flapsSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+            if (key.getCode() == KeyCode.DOWN) {
+                System.out.println("enter down");
+                plane.moveFlaps(1);
+            }
+        });
+
+        flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                plane.moveFlaps((double) newValue / 500);
+
+            }
+        });
+
+
+    }
+
+    public void setCockpitButtons() {
 
         landingGearButton.setStyle("-fx-background-color: red;");
         parkingbrakes.setStyle("-fx-background-color: red;");
@@ -417,11 +491,11 @@ public class PlaneController implements Initializable {
         lights.setStyle("-fx-background-color: red;");
         com.setStyle("-fx-background-color: red;");
 
-        leftArrow.setVisible(false);
-        rightArrow.setVisible(false);
-        upArrow.setVisible(false);
-        downArrow.setVisible(false);
-
-
     }
+
+
+
 }
+
+
+
