@@ -421,5 +421,6 @@ public class PlaneController implements Initializable {
         upArrow.setVisible(false);
         downArrow.setVisible(false);
 
+
     }
 }

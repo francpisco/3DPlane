@@ -31,14 +31,13 @@ public class UserService {
 
         boolean exists = false;
 
-        if (database.exists(user)) {
             if (!database.exists(user)) {
                 database.register(user);
                 exists = true;
             } else {
                 exists = false;
             }
-        }
+
         return exists;
     }
 }
