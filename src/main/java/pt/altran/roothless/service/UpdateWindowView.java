@@ -37,7 +37,7 @@ public class UpdateWindowView {
 
 
     private static void resize(double distanceToPlane, Circle circle) {
-        circle.setRadius(2560.0 / distanceToPlane);
+        circle.setRadius(10000 / distanceToPlane);
     }
 
     private static void updateRoll(Plane plane, Rectangle rectangle) {
