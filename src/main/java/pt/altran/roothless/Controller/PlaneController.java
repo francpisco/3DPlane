@@ -7,14 +7,15 @@ import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
@@ -27,6 +28,7 @@ import pt.altran.roothless.model.RelativePosition;
 import pt.altran.roothless.service.Constants;
 import pt.altran.roothless.service.Loop;
 import pt.altran.roothless.service.UpdateWindowView;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -40,6 +42,7 @@ public class PlaneController implements Initializable {
 
     public Label score;
     public Gauge fuelGauge;
+    public GridPane masterGrid;
     private Navigation navigation;
     private Loop loop;
 
@@ -134,12 +137,46 @@ public class PlaneController implements Initializable {
         this.relativePosition = relativePosition;
         this.updateWindowView = updateWindowView;
 
-        //initialize();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        thrustlabelListener();
+        turnlabelListener();
+        flapsLabelListener();
+
+        masterGrid.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case A:
+                        thrustSlider.setValue(thrustSlider.getValue()+1);
+                        break;
+                    case Z:
+                        thrustSlider.setValue(thrustSlider.getValue()-1);
+                        break;
+                    case J:
+                        System.out.println("enter left");
+                        System.out.println("turn slider value before" + turnSlider.getValue());
+                        turnSlider.setValue(turnSlider.getValue()-1);
+                        System.out.println("turn slider value after" + turnSlider.getValue());
+                        break;
+                    case L:
+                        System.out.println("enter right");
+                        System.out.println("turn slider value before" + turnSlider.getValue());
+                        turnSlider.setValue(turnSlider.getValue()+1);
+                        System.out.println("turn slider value after" + turnSlider.getValue());
+                        break;
+                    case I:
+                        flapsSlider.setValue(flapsSlider.getValue()+1);
+                        break;
+                    case K:
+                        flapsSlider.setValue(flapsSlider.getValue()-1);
+                        break;
+                }
+            }
+        });
 
         loop = new Loop(plane, bubble, relativePosition);
 
@@ -147,19 +184,11 @@ public class PlaneController implements Initializable {
         planeLoop.start();
 
         move();
-
         setCockpitButtons();
-
-        moveRudderSlider();
-        moveThrusthSlider();
-        moveFlapsSlider();
-
         leftArrow.setVisible(false);
         rightArrow.setVisible(false);
         upArrow.setVisible(false);
         downArrow.setVisible(false);
-
-
     }
 
     public void move() {
@@ -196,14 +225,6 @@ public class PlaneController implements Initializable {
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
-    }
-
-    public void setBubble(Bubble bubble) {
-        this.bubble = bubble;
-    }
-
-    public void setPlane(Plane plane) {
-        this.plane = plane;
     }
 
     public void landingGear(ActionEvent actionEvent) {
@@ -393,90 +414,6 @@ public class PlaneController implements Initializable {
         }
     }
 
-    public void moveThrusthSlider() {
-
-        thrustSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                thrustLabel.setText(String.format("%.0f", newValue));
-                isReadyToFly();
-                if (isreadytofly) {
-                    plane.moveThrottle((double) newValue / 10);
-                }
-            }
-        });
-
-        thrustSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-
-            if (key.getCode() == KeyCode.A) {
-                System.out.println("enter A");
-                plane.moveThrottle(1);
-            }
-        });
-
-        thrustSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if (key.getCode() == KeyCode.Z) {
-                System.out.println("enter Z");
-                plane.moveThrottle(-1);
-            }
-        });
-
-    }
-
-
-    public void moveRudderSlider() {
-
-        turnSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if (key.getCode() == KeyCode.LEFT) {
-                System.out.println("enter LEFT");
-                plane.moveRudder(-1);
-            }
-        });
-
-        turnSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if (key.getCode() == KeyCode.RIGHT) {
-                System.out.println("enter RIGHT");
-                plane.moveRudder(1);
-            }
-        });
-
-        turnSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                turnValueLabel.setText(String.format("%.0f", newValue));
-                plane.moveRudder((double) newValue / 100);
-
-            }
-        });
-
-
-    }
-
-    public void moveFlapsSlider() {
-
-
-        flapsSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if (key.getCode() == KeyCode.UP) {
-                System.out.println("enter UP");
-                plane.moveFlaps(-1);
-            }
-        });
-
-        flapsSlider.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if (key.getCode() == KeyCode.DOWN) {
-                System.out.println("enter down");
-                plane.moveFlaps(1);
-            }
-        });
-
-        flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                plane.moveFlaps((double) newValue / 500);
-
-            }
-        });
-
-
-    }
-
     public void setCockpitButtons() {
 
         landingGearButton.setStyle("-fx-background-color: red;");
@@ -493,7 +430,43 @@ public class PlaneController implements Initializable {
 
     }
 
+    public void thrustlabelListener(){
 
+        thrustSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                thrustLabel.setText(String.format("%.0f", newValue));
+                isReadyToFly();
+                if (isreadytofly) {
+                    plane.moveThrottle((double) newValue / 10);
+                }
+            }
+                        });
+
+    }
+
+    public void turnlabelListener(){
+
+        System.out.println("enter label listener!!!!");
+
+        turnSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                turnValueLabel.setText(String.format("%.0f", newValue));
+                plane.moveRudder((double) newValue / 100);
+            }
+        });
+    }
+
+    public void flapsLabelListener(){
+
+        flapsSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                flapsLabel.setText(String.format("%.0f", newValue));
+                plane.moveFlaps((double) newValue / 500);
+
+            }
+        });
+
+    }
 
 }
 

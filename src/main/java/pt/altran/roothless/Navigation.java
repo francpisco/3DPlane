@@ -1,15 +1,15 @@
 package pt.altran.roothless;
 
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import pt.altran.roothless.model.Plane;
-
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -71,7 +71,6 @@ public class Navigation {
             fxmlLoader.setControllerFactory(new Callback<Class<?>, Object>() {
                 @Override
                 public Object call(Class<?> param) {
-
                     return controllers.get(param.getSimpleName());
                 }
             });
@@ -107,4 +106,7 @@ public class Navigation {
         setScene(scenes.peek());
     }
 
+    public LinkedList<Scene> getScenes() {
+        return scenes;
+    }
 }

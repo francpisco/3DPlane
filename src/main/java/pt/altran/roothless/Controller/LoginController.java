@@ -54,7 +54,6 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
         nick.setCellValueFactory(new PropertyValueFactory("nick"));
         highscore.setCellValueFactory(new PropertyValueFactory("highscore"));
         buildData();
@@ -64,8 +63,7 @@ public class LoginController implements Initializable {
     }
 
     public void login(ActionEvent actionEvent) {
-
-        navigation.loadScreen("/views/game");
+            navigation.loadScreen("/views/game1");
     }
 
     public void register(ActionEvent actionEvent) {

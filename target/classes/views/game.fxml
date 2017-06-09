@@ -6,8 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
@@ -16,7 +14,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<GridPane fx:id="masterGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.altran.roothless.Controller.PlaneController">
     <columnConstraints>
         <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="NEVER" minWidth="128.0" prefWidth="0.0" />
         <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="NEVER" minWidth="128.0" prefWidth="0.0" />
@@ -81,13 +81,13 @@
 
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#797979" height="300.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" GridPane.columnIndex="0" GridPane.columnSpan="13" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.rowSpan="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
 
-        <Slider fx:id="turnSlider" blockIncrement="1.0" max="50.0" min="-50.0" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+        <Slider fx:id="turnSlider" focusTraversable="false" max="50.0" min="-50.0" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
 
-        <Slider fx:id="thrustSlider" orientation="VERTICAL" prefHeight="178.0" prefWidth="30.0" showTickLabels="true" showTickMarks="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.rowSpan="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+        <Slider fx:id="thrustSlider" focusTraversable="false" orientation="VERTICAL" prefHeight="178.0" prefWidth="30.0" showTickLabels="true" showTickMarks="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.rowSpan="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
 
-        <Slider fx:id="flapsSlider" majorTickUnit="4.0" max="50.0" min="-50.0" minorTickCount="1" orientation="VERTICAL" prefHeight="178.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.rowSpan="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+        <Slider fx:id="flapsSlider" focusTraversable="false" majorTickUnit="4.0" max="50.0" min="-50.0" minorTickCount="1" orientation="VERTICAL" prefHeight="178.0" prefWidth="14.0" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.rowSpan="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
 
-        <Label fx:id="turnValueLabel" text="0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+        <Label fx:id="flapsLabel" text="0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <GridPane.margin>
                 <Insets left="50.0" />
             </GridPane.margin>
@@ -99,7 +99,7 @@
             </GridPane.margin>
         </Label>
 
-        <Label fx:id="flapsLabel" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+        <Label fx:id="turnValueLabel" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
             <GridPane.margin>
                 <Insets bottom="70.0" />
             </GridPane.margin>
@@ -180,8 +180,6 @@
         <Gauge fx:id="speedLc" animated="true" maxHeight="90.0" maxWidth="100.0" skinType="LCD" title="SPEED" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
         <Gauge fx:id="rollLcd" animated="true" maxHeight="90.0" maxWidth="100.0" skinType="LCD" title="ROLL" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
         <Gauge fx:id="fuelGauge" animated="true" skinType="MODERN" title="FUEL" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
-
-        <Gauge fx:id="altitudeGauge" animated="true" prefHeight="300" rotate="90" skinType="BULLET_CHART" title="altitude" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="4" />
 
         <Label text="SCORE" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="1">
             <font>
