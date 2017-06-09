@@ -25,10 +25,13 @@ public class Main extends Application {
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/springconfig.xml");
 
-        Navigation navigation = applicationContext.getBean(Navigation.class);
+        System.out.println(applicationContext.getBean("plane"));
+
+        NavigationSuper navigation = (NavigationSuper) applicationContext.getBean("navigationSuper");
 
         navigation.setStage(primaryStage);
-        navigation.loadScreen("/views/game1");
+
+        navigation.loadScreen("/views/first");
 
     }
 

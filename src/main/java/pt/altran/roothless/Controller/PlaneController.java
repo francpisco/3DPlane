@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
@@ -22,6 +23,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import org.springframework.stereotype.Controller;
 import pt.altran.roothless.Navigation;
+import pt.altran.roothless.NavigationSuper;
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 import pt.altran.roothless.model.RelativePosition;
@@ -31,6 +33,8 @@ import pt.altran.roothless.service.UpdateWindowView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Altran on 23/05/2017.
@@ -42,6 +46,7 @@ public class PlaneController implements Initializable {
 
     public Label score;
     public Gauge fuelGauge;
+
     public GridPane masterGrid;
     private Navigation navigation;
     private Loop loop;
@@ -91,6 +96,10 @@ public class PlaneController implements Initializable {
     private RelativePosition relativePosition;
     private UpdateWindowView updateWindowView;
 
+    private NavigationSuper navigationSuper;
+
+    private Scene scene;
+
     @FXML
     private Ellipse targetElipse;
 
@@ -128,14 +137,15 @@ public class PlaneController implements Initializable {
 
     }
 
-    public PlaneController(Bubble bubble, Plane plane, Navigation navigation
-            , RelativePosition relativePosition, UpdateWindowView updateWindowView) {
+    public PlaneController(Bubble bubble, Plane plane, RelativePosition relativePosition
+            , UpdateWindowView updateWindowView, Loop loop, NavigationSuper navigationSuper) {
 
         this.bubble = bubble;
         this.plane = plane;
-        this.navigation = navigation;
         this.relativePosition = relativePosition;
         this.updateWindowView = updateWindowView;
+        this.loop = loop;
+        this.navigationSuper = navigationSuper;
 
     }
 
@@ -146,49 +156,63 @@ public class PlaneController implements Initializable {
         turnlabelListener();
         flapsLabelListener();
 
-        masterGrid.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case A:
-                        thrustSlider.setValue(thrustSlider.getValue()+1);
-                        break;
-                    case Z:
-                        thrustSlider.setValue(thrustSlider.getValue()-1);
-                        break;
-                    case J:
-                        System.out.println("enter left");
-                        System.out.println("turn slider value before" + turnSlider.getValue());
-                        turnSlider.setValue(turnSlider.getValue()-1);
-                        System.out.println("turn slider value after" + turnSlider.getValue());
-                        break;
-                    case L:
-                        System.out.println("enter right");
-                        System.out.println("turn slider value before" + turnSlider.getValue());
-                        turnSlider.setValue(turnSlider.getValue()+1);
-                        System.out.println("turn slider value after" + turnSlider.getValue());
-                        break;
-                    case I:
-                        flapsSlider.setValue(flapsSlider.getValue()+1);
-                        break;
-                    case K:
-                        flapsSlider.setValue(flapsSlider.getValue()-1);
-                        break;
-                }
-            }
-        });
+        System.out.println("scenet bvaluew -----------------------" + scene);
 
-        loop = new Loop(plane, bubble, relativePosition);
+
+        Timer timer = new Timer();
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                scene = navigationSuper.getScene();
+                System.out.println("sceene in PlaneController " + scene);
+                scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                    @Override
+                    public void handle(KeyEvent event) {
+                        switch (event.getCode()) {
+                            case A:
+                                thrustSlider.setValue(thrustSlider.getValue()+1);
+                                break;
+                            case Z:
+                                thrustSlider.setValue(thrustSlider.getValue()-1);
+                                break;
+                            case J:
+                                System.out.println("enter left");
+                                System.out.println("turn slider value before" + turnSlider.getValue());
+                                turnSlider.setValue(turnSlider.getValue()-1);
+                                System.out.println("turn slider value after" + turnSlider.getValue());
+                                break;
+                            case L:
+                                System.out.println("enter right");
+                                System.out.println("turn slider value before" + turnSlider.getValue());
+                                turnSlider.setValue(turnSlider.getValue()+1);
+                                System.out.println("turn slider value after" + turnSlider.getValue());
+                                break;
+                            case I:
+                                flapsSlider.setValue(flapsSlider.getValue()+1);
+                                break;
+                            case K:
+                                flapsSlider.setValue(flapsSlider.getValue()-1);
+                                break;
+                        }
+                    }
+                });
+            }
+        };
+
+        timer.schedule(task, 1000);
 
         Thread planeLoop = new Thread(loop);
         planeLoop.start();
 
-        move();
         setCockpitButtons();
+
+        move();
         leftArrow.setVisible(false);
         rightArrow.setVisible(false);
         upArrow.setVisible(false);
         downArrow.setVisible(false);
+
     }
 
     public void move() {
@@ -414,22 +438,6 @@ public class PlaneController implements Initializable {
         }
     }
 
-    public void setCockpitButtons() {
-
-        landingGearButton.setStyle("-fx-background-color: red;");
-        parkingbrakes.setStyle("-fx-background-color: red;");
-        power.setStyle("-fx-background-color: red;");
-        engine2.setStyle("-fx-background-color: red;");
-        engine1.setStyle("-fx-background-color: red;");
-        engine3.setStyle("-fx-background-color: red;");
-        engine4.setStyle("-fx-background-color: red;");
-        fuelpump.setStyle("-fx-background-color: red;");
-        apu.setStyle("-fx-background-color: red;");
-        lights.setStyle("-fx-background-color: red;");
-        com.setStyle("-fx-background-color: red;");
-
-    }
-
     public void thrustlabelListener(){
 
         thrustSlider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -466,6 +474,30 @@ public class PlaneController implements Initializable {
             }
         });
 
+    }
+
+    public void setCockpitButtons() {
+
+        landingGearButton.setStyle("-fx-background-color: red;");
+        parkingbrakes.setStyle("-fx-background-color: red;");
+        power.setStyle("-fx-background-color: red;");
+        engine2.setStyle("-fx-background-color: red;");
+        engine1.setStyle("-fx-background-color: red;");
+        engine3.setStyle("-fx-background-color: red;");
+        engine4.setStyle("-fx-background-color: red;");
+        fuelpump.setStyle("-fx-background-color: red;");
+        apu.setStyle("-fx-background-color: red;");
+        lights.setStyle("-fx-background-color: red;");
+        com.setStyle("-fx-background-color: red;");
+
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public Scene getScene() {
+        return scene;
     }
 
 }

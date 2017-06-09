@@ -26,28 +26,30 @@
         <constructor-arg ref="relativePosition"/>
     </bean>
 
-    <bean id="navigation" class="pt.altran.roothless.Navigation" scope="singleton">
+    <bean id="navigationSuper" class="pt.altran.roothless.NavigationSuper">
         <property name="controllers">
             <map>
                 <entry key="LoginController" value-ref="logincontroller"/>
                 <entry key="PlaneController" value-ref="planecontroller"/>
             </map>
         </property>
-
     </bean>
 
     <bean id="logincontroller" class="pt.altran.roothless.Controller.LoginController" autowire="constructor">
-        <constructor-arg ref ="navigation"/>
         <constructor-arg ref="userService"/>
+        <constructor-arg ref="navigationSuper"/>
     </bean>
 
     <bean id="planecontroller" class="pt.altran.roothless.Controller.PlaneController" autowire="constructor">
         <constructor-arg ref="plane"/>
         <constructor-arg ref="bubble"/>
-        <constructor-arg ref="navigation"/>
         <constructor-arg ref="relativePosition"/>
         <constructor-arg ref="updateWindowView"/>
+        <constructor-arg ref="loop"/>
+        <constructor-arg ref="navigationSuper"/>
     </bean>
+
+
     
 
 
