@@ -38,7 +38,6 @@ public class Navigation {
     private Stage stage;
     Parent root;
 
-
     //Constructor (is private so it can't be instantiated outside this class)
     private Navigation() {
 
@@ -107,4 +106,7 @@ public class Navigation {
         setScene(scenes.peek());
     }
 
+    public LinkedList<Scene> getScenes() {
+        return scenes;
+    }
 }

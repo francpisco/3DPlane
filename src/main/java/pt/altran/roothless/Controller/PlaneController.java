@@ -9,6 +9,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
@@ -21,6 +22,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import org.springframework.stereotype.Controller;
 import pt.altran.roothless.Navigation;
+import pt.altran.roothless.NavigationSuper;
 import pt.altran.roothless.model.Bubble;
 import pt.altran.roothless.model.Plane;
 import pt.altran.roothless.model.RelativePosition;
@@ -29,6 +31,8 @@ import pt.altran.roothless.service.Loop;
 import pt.altran.roothless.service.UpdateWindowView;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Altran on 23/05/2017.
@@ -40,7 +44,6 @@ public class PlaneController implements Initializable {
 
     public Label score;
     public Gauge fuelGauge;
-    private Navigation navigation;
     private Loop loop;
 
     public ToggleButton parkingbrakes;
@@ -88,6 +91,10 @@ public class PlaneController implements Initializable {
     private RelativePosition relativePosition;
     private UpdateWindowView updateWindowView;
 
+    private NavigationSuper navigationSuper;
+
+    private Scene scene;
+
     @FXML
     private Ellipse targetElipse;
 
@@ -125,14 +132,15 @@ public class PlaneController implements Initializable {
 
     }
 
-    public PlaneController(Bubble bubble, Plane plane, Navigation navigation
-            , RelativePosition relativePosition, UpdateWindowView updateWindowView) {
+    public PlaneController(Bubble bubble, Plane plane, RelativePosition relativePosition
+            , UpdateWindowView updateWindowView, Loop loop, NavigationSuper navigationSuper) {
 
         this.bubble = bubble;
         this.plane = plane;
-        this.navigation = navigation;
         this.relativePosition = relativePosition;
         this.updateWindowView = updateWindowView;
+        this.loop = loop;
+        this.navigationSuper = navigationSuper;
 
         //initialize();
     }
@@ -140,8 +148,17 @@ public class PlaneController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        Timer timer = new Timer();
 
-        loop = new Loop(plane, bubble, relativePosition);
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                scene = navigationSuper.getScene();
+                System.out.println("sceene in PlaneController " + scene);
+            }
+        };
+
+        timer.schedule(task, 1000);
 
         Thread planeLoop = new Thread(loop);
         planeLoop.start();
@@ -158,7 +175,6 @@ public class PlaneController implements Initializable {
         rightArrow.setVisible(false);
         upArrow.setVisible(false);
         downArrow.setVisible(false);
-
 
     }
 
@@ -493,8 +509,13 @@ public class PlaneController implements Initializable {
 
     }
 
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
 
-
+    public Scene getScene() {
+        return scene;
+    }
 }
 
 
